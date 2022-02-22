@@ -12,6 +12,7 @@
 
   <ItemGroup>
     <Folder Include="Views\Admin\Home\" />
+    <Folder Include="wwwroot\admin\" />
   </ItemGroup>
 
 </Project>
