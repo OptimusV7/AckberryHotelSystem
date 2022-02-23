@@ -972,6 +972,7 @@ td {} .inn-com p {} .inn-com-form {} .inn-com-form form {
 }
 .book-form form label {
     padding: 8px;
+    margin-left:100px;
     left: 10px;
     color: #7f7f7f;
     font-size: 14px;
@@ -3417,7 +3418,7 @@ footer ul li a {
 .copy {
     position: relative;
     overflow: hidden;
-    margin-bottom: 56px;
+    
     background: #1d2033;
 }
 .copy p {
