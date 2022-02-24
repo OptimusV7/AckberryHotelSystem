@@ -8,5 +8,9 @@ namespace Hotel_Core_System.Controllers
         {
             return View("~/Views/Auth/AdminLogin.cshtml");
         }
+        public IActionResult UserRegister()
+        {
+            return View("~/Views/Auth/UserRegister.cshtml");
+        }
     }
 }
