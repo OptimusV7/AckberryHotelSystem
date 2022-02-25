@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+﻿using HotelAPI.Models;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
 namespace Hotel_Core_System.Models
@@ -10,6 +11,13 @@ namespace Hotel_Core_System.Models
 
         }
 
-        
+        public DbSet<RoomType> RoomTypes { get; set; }
+        public DbSet<RoomStatus> RoomStatus { get; set; }
+        public DbSet<AccountStatus> AccountStatus { get; set; }
+        public DbSet<PaymentStatus> PaymentStatus { get; set; }
+        public DbSet<BookingStatus> BookingStatus { get; set; }
+        public DbSet<Room> Rooms { get; set; }
+        public DbSet<Booking> Bookings { get; set; }
+        public DbSet<MpesaCallback> MpesaCallbacks { get; set; }
     }
 }
