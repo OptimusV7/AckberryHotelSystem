@@ -1,4 +1,5 @@
-﻿using HotelAPI.Models;
+﻿using Hotel_Core_System.Models;
+using HotelAPI.Models;
 using HotelAPI.Utility;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
