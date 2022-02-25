@@ -1,4 +1,6 @@
 using Hotel_Core_System.Models;
+using HotelAPI.DBInitializer;
+using HotelAPI.Utility;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -31,7 +33,7 @@ namespace Hotel_Core_System
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, IDbInitialize dbInitialize)
         {
             if (env.IsDevelopment())
             {
@@ -49,6 +51,11 @@ namespace Hotel_Core_System
             app.UseRouting();
 
             app.UseAuthorization();
+
+            app.UseMiddleware<JwtMiddleware>();
+
+            dbInitialize.Initalize();
+            dbInitialize.Seed();
 
             app.UseEndpoints(endpoints =>
             {
