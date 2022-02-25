@@ -10,12 +10,10 @@ namespace HotelAPI.Utility
     public class JwtMiddleware
     {
         private readonly RequestDelegate _next;
-        private readonly Appsettings _appSettings;
 
-        public JwtMiddleware(RequestDelegate next, IOptions<Appsettings> appSettings)
+        public JwtMiddleware(RequestDelegate next)
         {
             _next = next;
-            _appSettings = appSettings.Value;
         }
 
         public async Task Invoke(HttpContext context, IUserService userService, IJwtService jwtService)
