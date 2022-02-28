@@ -74,7 +74,7 @@ namespace Hotel_Core_System.Controllers
                 }
                 HttpContext.Session.SetString("ssuserName", user.Name);
 
-                token = _jwtService.GenerateToken(user);
+                /*token = _jwtService.GenerateToken(user);*/
             }
             else
             {
