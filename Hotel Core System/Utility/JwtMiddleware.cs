@@ -1,11 +1,11 @@
-﻿using HotelAPI.Services.Jwt;
-using HotelAPI.Services.Users;
+﻿using Hotel_Core_System.Services.Jwt;
+using Hotel_Core_System.Services.Users;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Options;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace HotelAPI.Utility
+namespace Hotel_Core_System.Utility
 {
     public class JwtMiddleware
     {

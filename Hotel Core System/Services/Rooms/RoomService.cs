@@ -1,10 +1,10 @@
 ﻿using Hotel_Core_System.Models;
-using HotelAPI.Services.LogManagerConf;
+using Hotel_Core_System.Services.LogManagerConf;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace HotelAPI.Services.Rooms
+namespace Hotel_Core_System.Services.Rooms
 {
     public class RoomService : IRoomService
     {

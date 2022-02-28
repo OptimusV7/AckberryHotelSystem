@@ -1,6 +1,6 @@
 ﻿using Hotel_Core_System.Models;
-using HotelAPI.Services.LogManagerConf;
-using HotelAPI.Utility;
+using Hotel_Core_System.Services.LogManagerConf;
+using Hotel_Core_System.Utility;
 using Microsoft.Extensions.Options;
 using Newtonsoft.Json.Linq;
 using System;
@@ -10,7 +10,7 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
-namespace HotelAPI.Services.Mpesa
+namespace Hotel_Core_System.Services.Mpesa
 {
     public class MpesaPayment : IMpesaPayment
     {

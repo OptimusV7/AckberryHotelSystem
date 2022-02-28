@@ -1,5 +1,5 @@
 ﻿using Hotel_Core_System.Models;
-using HotelAPI.Utility;
+using Hotel_Core_System.Utility;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 using System;
@@ -8,7 +8,7 @@ using System.Linq;
 using System.Security.Claims;
 using System.Text;
 
-namespace HotelAPI.Services.Jwt
+namespace Hotel_Core_System.Services.Jwt
 {
     public class JwtService : IJwtService
     {

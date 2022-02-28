@@ -1,6 +1,6 @@
 ﻿using Hotel_Core_System.Models;
 
-namespace HotelAPI.Services.Jwt
+namespace Hotel_Core_System.Services.Jwt
 {
     public interface IJwtService
     {

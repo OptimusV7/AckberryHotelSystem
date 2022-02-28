@@ -5,7 +5,7 @@ using System.IO;
 using System.Reflection;
 using System.Xml;
 
-namespace HotelAPI.Services.LogManagerConf
+namespace Hotel_Core_System.Services.LogManagerConf
 {
     public class LoggerManager : ILoggerManager
     {

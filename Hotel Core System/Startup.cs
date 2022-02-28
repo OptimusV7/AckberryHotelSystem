@@ -1,9 +1,9 @@
+using Hotel_Core_System.DbInitializer;
+using Hotel_Core_System.DBInitializer;
 using Hotel_Core_System.Models;
-using HotelAPI.DBInitializer;
-using HotelAPI.Utility;
+using Hotel_Core_System.Utility;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -32,11 +32,12 @@ namespace Hotel_Core_System
             services.AddDbContext<ApplicationDBContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
             services.AddIdentity<ApplicationUser, IdentityRole>().AddEntityFrameworkStores<ApplicationDBContext>();
+            services.AddScoped<IDbInitializer, DbInitialize>();
             services.AddControllersWithViews();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, IDbInitialize dbInitialize)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, IDbInitializer dbInitialize)
         {
             if (env.IsDevelopment())
             {

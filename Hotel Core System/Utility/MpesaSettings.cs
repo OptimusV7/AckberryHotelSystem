@@ -1,4 +1,4 @@
-﻿namespace HotelAPI.Utility
+﻿namespace Hotel_Core_System.Utility
 {
     public class MpesaSettings
     {

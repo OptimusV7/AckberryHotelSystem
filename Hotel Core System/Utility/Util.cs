@@ -1,5 +1,5 @@
 ﻿using Hotel_Core_System.Models;
-using HotelAPI.Services.LogManagerConf;
+using Hotel_Core_System.Services.LogManagerConf;
 using Microsoft.Extensions.Options;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
@@ -11,7 +11,7 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Text.RegularExpressions;
 
-namespace HotelAPI.Utility
+namespace Hotel_Core_System.Utility
 {
     public class Util
     {

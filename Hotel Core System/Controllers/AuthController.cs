@@ -1,6 +1,6 @@
 ﻿using Hotel_Core_System.Models;
 using Hotel_Core_System.Models.ViewModels;
-using HotelAPI.Utility;
+using Hotel_Core_System.Utility;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace HotelAPI.Services.Users
+namespace Hotel_Core_System.Services.Users
 {
     public interface IUserService
     {

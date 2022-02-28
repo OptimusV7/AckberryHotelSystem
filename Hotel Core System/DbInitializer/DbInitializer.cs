@@ -1,5 +1,6 @@
-﻿using Hotel_Core_System.Models;
-using HotelAPI.Utility;
+﻿using Hotel_Core_System.DbInitializer;
+using Hotel_Core_System.Models;
+using Hotel_Core_System.Utility;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
@@ -7,9 +8,9 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace HotelAPI.DBInitializer
+namespace Hotel_Core_System.DBInitializer
 {
-    public class DbInitialize : IDbInitialize
+    public class DbInitialize : IDbInitializer
     {
         private readonly ApplicationDBContext _db;
         private readonly UserManager<ApplicationUser> _userManager;

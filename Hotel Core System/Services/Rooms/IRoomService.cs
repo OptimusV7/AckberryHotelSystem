@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace HotelAPI.Services.Rooms
+namespace Hotel_Core_System.Services.Rooms
 {
     public interface IRoomService
     {

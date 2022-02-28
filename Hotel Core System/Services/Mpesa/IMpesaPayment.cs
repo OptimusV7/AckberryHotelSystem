@@ -1,7 +1,7 @@
 ﻿using Hotel_Core_System.Models;
 using System.Threading.Tasks;
 
-namespace HotelAPI.Services.Mpesa
+namespace Hotel_Core_System.Services.Mpesa
 {
     public interface IMpesaPayment
     {

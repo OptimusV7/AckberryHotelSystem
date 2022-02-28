@@ -1,10 +1,10 @@
 ﻿using Hotel_Core_System.Models;
-using HotelAPI.Utility;
+using Hotel_Core_System.Utility;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace HotelAPI.Services.Users
+namespace Hotel_Core_System.Services.Users
 {
     public class UserService : IUserService
     {
