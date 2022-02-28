@@ -21,7 +21,7 @@ namespace Hotel_Core_System.Migrations
                 .HasAnnotation("ProductVersion", "5.0.14")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            modelBuilder.Entity("HotelAPI.Models.AccountStatus", b =>
+            modelBuilder.Entity(".AccountStatus", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -36,7 +36,7 @@ namespace Hotel_Core_System.Migrations
                     b.ToTable("AccountStatus");
                 });
 
-            modelBuilder.Entity("HotelAPI.Models.Booking", b =>
+            modelBuilder.Entity(".Booking", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -71,7 +71,7 @@ namespace Hotel_Core_System.Migrations
                     b.ToTable("Bookings");
                 });
 
-            modelBuilder.Entity("HotelAPI.Models.BookingStatus", b =>
+            modelBuilder.Entity(".BookingStatus", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -86,7 +86,7 @@ namespace Hotel_Core_System.Migrations
                     b.ToTable("BookingStatus");
                 });
 
-            modelBuilder.Entity("HotelAPI.Models.MpesaCallback", b =>
+            modelBuilder.Entity(".MpesaCallback", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -125,7 +125,7 @@ namespace Hotel_Core_System.Migrations
                     b.ToTable("MpesaCallbacks");
                 });
 
-            modelBuilder.Entity("HotelAPI.Models.PaymentStatus", b =>
+            modelBuilder.Entity(".PaymentStatus", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -140,7 +140,7 @@ namespace Hotel_Core_System.Migrations
                     b.ToTable("PaymentStatus");
                 });
 
-            modelBuilder.Entity("HotelAPI.Models.Room", b =>
+            modelBuilder.Entity(".Room", b =>
                 {
                     b.Property<int>("RoomId")
                         .ValueGeneratedOnAdd()
@@ -175,7 +175,7 @@ namespace Hotel_Core_System.Migrations
                     b.ToTable("Rooms");
                 });
 
-            modelBuilder.Entity("HotelAPI.Models.RoomStatus", b =>
+            modelBuilder.Entity(".RoomStatus", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -190,7 +190,7 @@ namespace Hotel_Core_System.Migrations
                     b.ToTable("RoomStatus");
                 });
 
-            modelBuilder.Entity("HotelAPI.Models.RoomType", b =>
+            modelBuilder.Entity(".RoomType", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -404,9 +404,9 @@ namespace Hotel_Core_System.Migrations
                     b.ToTable("AspNetUserTokens");
                 });
 
-            modelBuilder.Entity("HotelAPI.Models.Booking", b =>
+            modelBuilder.Entity(".Booking", b =>
                 {
-                    b.HasOne("HotelAPI.Models.Room", "Room")
+                    b.HasOne(".Room", "Room")
                         .WithMany()
                         .HasForeignKey("RoomId")
                         .OnDelete(DeleteBehavior.Cascade)

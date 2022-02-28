@@ -1,7 +1,7 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
 
-namespace HotelAPI.Models
+namespace Hotel_Core_System.Models
 {
     public class MpesaCallback
     {

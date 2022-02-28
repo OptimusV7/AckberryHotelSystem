@@ -1,7 +1,7 @@
 ﻿
 using Newtonsoft.Json;
 
-namespace HotelAPI.Models.ViewModels
+namespace Hotel_Core_System.Models.ViewModels
 {
     public class MpesaVM
     {        

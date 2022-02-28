@@ -1,6 +1,4 @@
-﻿
-using Hotel_Core_System.Models;
-using HotelAPI.Models;
+﻿using Hotel_Core_System.Models;
 using HotelAPI.Services.LogManagerConf;
 using System.Collections.Generic;
 using System.Linq;

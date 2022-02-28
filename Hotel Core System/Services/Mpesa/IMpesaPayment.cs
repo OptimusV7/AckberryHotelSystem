@@ -1,4 +1,4 @@
-﻿using HotelAPI.Models;
+﻿using Hotel_Core_System.Models;
 using System.Threading.Tasks;
 
 namespace HotelAPI.Services.Mpesa

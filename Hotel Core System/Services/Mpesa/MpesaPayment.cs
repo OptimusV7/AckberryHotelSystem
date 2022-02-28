@@ -1,5 +1,4 @@
 ﻿using Hotel_Core_System.Models;
-using HotelAPI.Models;
 using HotelAPI.Services.LogManagerConf;
 using HotelAPI.Utility;
 using Microsoft.Extensions.Options;

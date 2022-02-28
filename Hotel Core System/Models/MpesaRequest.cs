@@ -1,4 +1,4 @@
-﻿namespace HotelAPI.Models
+﻿namespace Hotel_Core_System.Models
 {
     public class MpesaRequest
     {

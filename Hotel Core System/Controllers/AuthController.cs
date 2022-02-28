@@ -1,5 +1,5 @@
 ﻿using Hotel_Core_System.Models;
-using HotelAPI.Models.ViewModels;
+using Hotel_Core_System.Models.ViewModels;
 using HotelAPI.Utility;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
