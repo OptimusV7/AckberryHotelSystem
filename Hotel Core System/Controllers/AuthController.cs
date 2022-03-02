@@ -34,27 +34,30 @@ namespace Hotel_Core_System.Controllers
             return View("~/Views/Auth/UserRegister.cshtml");
         }
 
+        [HttpPost]
+        [ValidateAntiForgeryToken]
         public async Task<IActionResult> Login(LoginVM model)
         {
-            var result = await _signInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, false);
-            var token = "";
-            if (!result.Succeeded)
-            {
-                return Ok(new { Message = "Invalid Login Attempt. Check and try Again." });
 
-            }
-            var user = await _userManager.FindByNameAsync(model.Email);
-            if (user != null)
+            if (ModelState.IsValid)
             {
-                HttpContext.Session.SetString("ssuserName", user.Name);
-
-                return Ok(new { user, token, Message = "Success" });
+                var result = await _signInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, false);
+                if (result.Succeeded)
+                {
+                    var user = await _userManager.FindByNameAsync(model.Email);
+                    HttpContext.Session.SetString("ssuserName", user.Name);
+                    return RedirectToAction("Index", "Home");
+                }
+                ModelState.AddModelError("", "Invalid Login Attempt");
             }
 
-            return Ok(new { user, token, Message = "Failed. Wrong Credentials" });
+            return View(model);
+
         }
 
-        
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
         public async Task<IActionResult> Register(RegisterVM model)
         {
             if (!_roleManager.RoleExistsAsync(Helper.Admin).GetAwaiter().GetResult())
@@ -64,41 +67,37 @@ namespace Hotel_Core_System.Controllers
                 await _roleManager.CreateAsync(new IdentityRole(Helper.Manager));
                 await _roleManager.CreateAsync(new IdentityRole(Helper.Guest));
                 await _roleManager.CreateAsync(new IdentityRole(Helper.Member));
-            }
-            var user = new ApplicationUser
-            {
-                UserName = model.Email,
-                Email = model.Email,
-                Name = model.Name
-            };
+            }           
 
-            var result = await _userManager.CreateAsync(user, model.Password);
-            var token = "";
-            if (result.Succeeded)
+            if (!ModelState.IsValid)
             {
-                await _userManager.AddToRoleAsync(user, model.RoleName);
-                if (!User.IsInRole(Helper.Admin))
+                var user = new ApplicationUser
                 {
-                    await _signInManager.SignInAsync(user, isPersistent: false);
+                    UserName = model.Email,
+                    Email = model.Email,
+                    Name = model.Name
+                };
+                var role = Helper.Guest;
+                var result = await _userManager.CreateAsync(user, model.Password);
+                if (result.Succeeded)
+                {
+                    await _userManager.AddToRoleAsync(user, role);
+                    if (!User.IsInRole(Helper.Admin))
+                    {
+                        await _signInManager.SignInAsync(user, isPersistent: false);
+                    }
+                    else
+                    {
+                        TempData["newAdminSignUp"] = user.Name;
+                    }
+                    return RedirectToAction("Index", "Home");
                 }
-                HttpContext.Session.SetString("ssuserName", user.Name);
-
-                /*token = _jwtService.GenerateToken(user);*/
-            }
-            else
-            {
-                var errorList = new List<string>();
                 foreach (var error in result.Errors)
                 {
-                    errorList.Add(error.Description);
-                    errorList.Add(error.Code);
+                    ModelState.AddModelError("", error.Description);
                 }
-
-                return Ok(new { status = "400", errorList });
-
             }
-
-            return Ok(new { result, token });
+            return View(model);
 
         }
 
@@ -106,7 +105,7 @@ namespace Hotel_Core_System.Controllers
         public async Task<IActionResult> LogOff()
         {
             await _signInManager.SignOutAsync();
-            return Ok();
+            return RedirectToAction("UserRegister", "Auth");
         }
     }
 }
