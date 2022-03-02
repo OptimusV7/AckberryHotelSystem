@@ -1,6 +1,8 @@
 using Hotel_Core_System.DbInitializer;
 using Hotel_Core_System.DBInitializer;
 using Hotel_Core_System.Models;
+using Hotel_Core_System.Services.Jwt;
+using Hotel_Core_System.Services.Users;
 using Hotel_Core_System.Utility;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -33,6 +35,8 @@ namespace Hotel_Core_System
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
             services.AddIdentity<ApplicationUser, IdentityRole>().AddEntityFrameworkStores<ApplicationDBContext>();
             services.AddScoped<IDbInitializer, DbInitialize>();
+            services.AddScoped<IUserService, UserService>();
+            services.AddScoped<IJwtService, JwtService>();
             services.AddControllersWithViews();
         }
 
