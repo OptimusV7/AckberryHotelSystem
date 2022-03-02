@@ -16,6 +16,15 @@ namespace Hotel_Core_System.Controllers
         SignInManager<ApplicationUser> _signInManager;
         RoleManager<IdentityRole> _roleManager;
 
+        public AuthController(ApplicationDBContext db, UserManager<ApplicationUser> userManager,
+            RoleManager<IdentityRole> roleManager, SignInManager<ApplicationUser> signInManager)
+        {
+            _db = db;
+            _userManager = userManager;
+            _roleManager = roleManager;
+            _signInManager = signInManager;
+        }
+
         public IActionResult index()
         {
             return View("~/Views/Auth/AdminLogin.cshtml");
