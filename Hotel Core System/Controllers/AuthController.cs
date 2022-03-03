@@ -105,7 +105,7 @@ namespace Hotel_Core_System.Controllers
         public async Task<IActionResult> LogOff()
         {
             await _signInManager.SignOutAsync();
-            return RedirectToAction("UserRegister", "Auth");
+            return RedirectToAction("Index", "Home");
         }
     }
 }

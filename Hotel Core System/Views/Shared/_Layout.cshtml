@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿@inject Microsoft.AspNetCore.Identity.SignInManager<Hotel_Core_System.Models.ApplicationUser> signInManager
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <title>@ViewData["Title"] - Hotel Core System</title>
@@ -66,10 +67,14 @@
 				<div class="row">
 					<div class="top-bar">
 						<ul>
+							@if (signInManager.IsSignedIn(User))
+							{
+								<li><a class='dropdown-button' href='#' data-activates='dropdown5'>Hello, @User.Identity.Name! <i class="fa fa-user"></i></a>
+								</li>
+							}else{
 							<li><a class='dropdown-button' href='#' data-activates='dropdown1'>My Account <i class="fa fa-angle-down"></i></a>
 							</li>
-							<li><a >User Account <i class="fa fa-user"></i></a>
-							</li>
+							}	
 							<li><a asp-controller="Home" asp-action="About">About Us</a>
 							</li>
 							<li><a asp-controller="Home" asp-action="ContactUs">Contact Us</a>
@@ -80,14 +85,29 @@
 					</div>
 					<div class="all-drop-down">
 						<!-- Dropdown Structure -->
-						<ul id='dropdown1' class='dropdown-content drop-con-man'>
-							<li>
-								<a asp-controller="Auth" asp-action="UserRegister"><img src="~/theme/images/icon/5.png" alt=""> Register</a>
-							</li>
-							<li>
-								<a asp-controller="Auth" asp-action="Index"><img src="~/theme/images/icon/6.png" alt=""> Log In</a>
-							</li>
-						</ul>
+						@if (signInManager.IsSignedIn(User))
+						{
+							<ul id='dropdown5' class='dropdown-content drop-con-man'>
+
+								<form method="post" id="logoutForm" asp-action="Logoff" asp-controller="Auth">
+									<ul class="nav navbar-nav">
+										<li><a href="javascript:document.getElementById('logoutForm').submit()">Log off</a></li>
+									</ul>
+								</form>
+							</ul>
+						}
+						else
+						{
+							<ul id='dropdown1' class='dropdown-content drop-con-man'>
+								<li>
+									<a asp-controller="Auth" asp-action="UserRegister"><img src="~/theme/images/icon/5.png" alt=""> Register</a>
+								</li>
+								<li>
+									<a asp-controller="Auth" asp-action="Index"><img src="~/theme/images/icon/6.png" alt=""> Log In</a>
+								</li>
+							</ul>
+						}
+
 					</div>
 				</div>
 				<div class="row">

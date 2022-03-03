@@ -37,6 +37,13 @@ namespace Hotel_Core_System
             services.AddScoped<IDbInitializer, DbInitialize>();
             services.AddScoped<IUserService, UserService>();
             services.AddScoped<IJwtService, JwtService>();
+            services.AddDistributedMemoryCache();
+            services.AddSession(options =>
+            {
+                options.IdleTimeout = TimeSpan.FromDays(1);
+                options.Cookie.HttpOnly = true;
+                options.Cookie.IsEssential = true;
+            });
             services.AddControllersWithViews();
         }
 
@@ -61,10 +68,12 @@ namespace Hotel_Core_System
             app.UseAuthorization();
             app.UseAuthentication();
 
-            app.UseMiddleware<JwtMiddleware>();
+            //app.UseMiddleware<JwtMiddleware>();
 
             dbInitialize.Initalize();
             dbInitialize.Seed();
+
+            app.UseSession();
 
             app.UseEndpoints(endpoints =>
             {
