@@ -568,8 +568,8 @@
                                         <img src="https://via.placeholder.com/80x80" alt="">
                                     </div>
                                     <div class="info text-center">
-                                        <p class="name font-weight-bold mb-0">Amiah Burton</p>
-                                        <p class="email text-muted mb-3">amiahburton@gmail.com</p>
+                                        <p class="name font-weight-bold mb-0">@User.Identity.Name!</p>
+                                        <p class="email text-muted mb-3">admin@mail.com</p>
                                     </div>
                                 </div>
                                 <div class="dropdown-body">
@@ -593,10 +593,16 @@
                                             </a>
                                         </li>
                                         <li class="nav-item">
-                                            <a href="javascript:;" class="nav-link">
-                                                <i data-feather="log-out"></i>
-                                                <span>Log Out</span>
-                                            </a>
+
+                                            <form method="post" id="logoutForm" asp-action="Logoff" asp-controller="Auth">
+                                                <ul class="nav navbar-nav">
+                                                    <li>
+                                                        <a href="javascript:document.getElementById('logoutForm').submit()">
+                                                            <i data-feather="log-out"></i>
+                                                        </a>
+                                                    </li>
+                                                </ul>
+                                            </form>
                                         </li>
                                     </ul>
                                 </div>

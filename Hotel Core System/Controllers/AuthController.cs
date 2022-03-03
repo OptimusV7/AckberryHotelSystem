@@ -45,8 +45,18 @@ namespace Hotel_Core_System.Controllers
                 if (result.Succeeded)
                 {
                     var user = await _userManager.FindByNameAsync(model.Email);
-                    HttpContext.Session.SetString("ssuserName", user.Name);
-                    return RedirectToAction("Index", "Home");
+                    var roles =  _userManager.GetRolesAsync(user).Result;
+					if (roles.Contains(Helper.Admin))
+					{
+                        HttpContext.Session.SetString("adminUserName", user.Name);
+                        return RedirectToAction("Index", "Admin");
+					}
+					else
+					{
+                        HttpContext.Session.SetString("guestUserName", user.Name);
+                        return RedirectToAction("Index", "Home");
+                    }
+                    
                 }
                 ModelState.AddModelError("", "Invalid Login Attempt");
             }
