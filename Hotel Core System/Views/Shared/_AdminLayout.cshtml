@@ -1,5 +1,6 @@
-﻿<!DOCTYPE html>
-
+﻿@using Microsoft.AspNetCore.Http
+@inject IHttpContextAccessor HttpContextAccessor
+<!DOCTYPE html>
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
@@ -568,8 +569,8 @@
                                         <img src="https://via.placeholder.com/80x80" alt="">
                                     </div>
                                     <div class="info text-center">
-                                        <p class="name font-weight-bold mb-0">@User.Identity.Name!</p>
-                                        <p class="email text-muted mb-3">admin@mail.com</p>
+                                        <p class="name font-weight-bold mb-0">@HttpContextAccessor.HttpContext.Session.GetString("adminUserName")</p>
+                                        <p class="email text-muted mb-3">@User.Identity.Name</p>
                                     </div>
                                 </div>
                                 <div class="dropdown-body">
@@ -595,13 +596,14 @@
                                         <li class="nav-item">
 
                                             <form method="post" id="logoutForm" asp-action="Logoff" asp-controller="Auth">
-                                                <ul class="nav navbar-nav">
-                                                    <li>
+                                                
+                                                   
                                                         <a href="javascript:document.getElementById('logoutForm').submit()">
                                                             <i data-feather="log-out"></i>
+                                                            <span>Logout</span>
                                                         </a>
-                                                    </li>
-                                                </ul>
+                                                    
+                                                
                                             </form>
                                         </li>
                                     </ul>

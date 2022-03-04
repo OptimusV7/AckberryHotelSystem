@@ -1,4 +1,6 @@
-﻿@inject Microsoft.AspNetCore.Identity.SignInManager<Hotel_Core_System.Models.ApplicationUser> signInManager
+﻿@using Microsoft.AspNetCore.Http
+@inject IHttpContextAccessor HttpContextAccessor
+@inject Microsoft.AspNetCore.Identity.SignInManager<Hotel_Core_System.Models.ApplicationUser> signInManager
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -15,6 +17,7 @@
 	<!-- ALL CSS FILES -->
 	<link href="~/theme/css/materialize.css" rel="stylesheet">
 	<link href="~/theme/css/style.css" rel="stylesheet">
+	<link href="~/css/style.css" rel="stylesheet">
 	<link href="~/theme/css/bootstrap.css" rel="stylesheet" type="text/css" />
 	<!-- RESPONSIVE.CSS ONLY FOR MOBILE AND TABLET VIEWS -->
 	<link href="~/theme/css/responsive.css" rel="stylesheet">
@@ -69,10 +72,10 @@
 						<ul>
 							@if (signInManager.IsSignedIn(User))
 							{
-								<li><a class='dropdown-button' href='#' data-activates='dropdown5'>Hello, @User.Identity.Name! <i class="fa fa-user"></i></a>
+								<li class = "toptext"><a class='dropdown-button' href='#' data-activates='dropdown5'>Hello, @HttpContextAccessor.HttpContext.Session.GetString("guestUserName")  <i class="fa fa-user"></i></a>
 								</li>
 							}else{
-							<li><a class='dropdown-button' href='#' data-activates='dropdown1'>My Account <i class="fa fa-angle-down"></i></a>
+							<li class = "toptext"><a class='dropdown-button' href='#' data-activates='dropdown1'>My Account <i class="fa fa-angle-down"></i></a>
 							</li>
 							}	
 							<li><a asp-controller="Home" asp-action="About">About Us</a>
