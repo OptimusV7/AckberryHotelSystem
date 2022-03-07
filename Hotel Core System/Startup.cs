@@ -2,8 +2,9 @@ using Hotel_Core_System.DbInitializer;
 using Hotel_Core_System.DBInitializer;
 using Hotel_Core_System.Models;
 using Hotel_Core_System.Services.Jwt;
+using Hotel_Core_System.Services.LogManagerConf;
+using Hotel_Core_System.Services.Rooms;
 using Hotel_Core_System.Services.Users;
-using Hotel_Core_System.Utility;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity;
@@ -12,9 +13,6 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace Hotel_Core_System
 {
@@ -36,6 +34,8 @@ namespace Hotel_Core_System
             services.AddIdentity<ApplicationUser, IdentityRole>().AddEntityFrameworkStores<ApplicationDBContext>();
             services.AddScoped<IDbInitializer, DbInitialize>();
             services.AddScoped<IUserService, UserService>();
+            services.AddScoped<IRoomService, RoomService>();
+            services.AddScoped<ILoggerManager, LoggerManager>();
             services.AddScoped<IJwtService, JwtService>();
             services.AddDistributedMemoryCache();
             services.AddSession(options =>

@@ -10,7 +10,7 @@ namespace Hotel_Core_System.Controllers
 {
     public class RoomController : Controller
     {
-        private IRoomService _roomService;
+        private readonly IRoomService _roomService;
 
         public RoomController(IRoomService roomService )
         {
@@ -28,7 +28,7 @@ namespace Hotel_Core_System.Controllers
 
         public IActionResult createRoom()
         {
-            return View();
+            return View("~/Views/Admin/Room/Create.cshtml");
         }
 
         public IActionResult getAllRooms()
