@@ -18,7 +18,7 @@ namespace Hotel_Core_System.Services.Rooms
             logger = loggerManager;
         }
         public async Task<int> AddRoom(Room model)
-        {
+        {           
             var room = new Room
             {
                 RoomNumber = model.RoomNumber,

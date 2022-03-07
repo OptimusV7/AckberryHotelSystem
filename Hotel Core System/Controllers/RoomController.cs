@@ -26,29 +26,43 @@ namespace Hotel_Core_System.Controllers
             return View();
         }
 
+        public IActionResult createRoom()
+        {
+            return View();
+        }
+
+        public IActionResult getAllRooms()
+        {
+            return View("~/Views/Admin/Room/Index.cshtml");
+        }
+
         
         [HttpPost]
-        [Route("AddRoom")]
         public IActionResult Post(Room data)
         {
-            CommonResponse<int> commonRespose = new CommonResponse<int>();
-            try
+            if (ModelState.IsValid)
             {
-                commonRespose.status = _roomService.AddRoom(data).Result;
-                if (commonRespose.status == 200)
+                CommonResponse<int> commonRespose = new CommonResponse<int>();
+                try
                 {
-                    commonRespose.message = Helper.roomAdded;
-                    commonRespose.status = Helper.success_code;
+                    commonRespose.status = _roomService.AddRoom(data).Result;
+                    if (commonRespose.status == 200)
+                    {
+                       return RedirectToAction("getAllRooms", "Room");
+                    }
                 }
-            }
-            catch (Exception e)
-            {
-                commonRespose.message = e.Message;
-                commonRespose.status = Helper.failure_code;
+                catch (Exception e)
+                {
+                    ModelState.AddModelError("", e.Message);
 
-            }
+                }
 
-            return Ok(commonRespose);
+                return RedirectToAction("Index", "Home");
+            }
+            ModelState.AddModelError("", "Check your form data");
+
+            return RedirectToAction("createRoom", "Room");
+
         }
 
         
