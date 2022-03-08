@@ -5,9 +5,11 @@ using Hotel_Core_System.Services.Jwt;
 using Hotel_Core_System.Services.LogManagerConf;
 using Hotel_Core_System.Services.Rooms;
 using Hotel_Core_System.Services.Users;
+using Hotel_Core_System.Utility;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -36,6 +38,7 @@ namespace Hotel_Core_System
             services.AddScoped<IUserService, UserService>();
             services.AddScoped<IRoomService, RoomService>();
             services.AddScoped<ILoggerManager, LoggerManager>();
+            services.AddScoped<IEmailSender, EmailSender>();
             services.AddScoped<IJwtService, JwtService>();
             services.AddDistributedMemoryCache();
             services.AddSession(options =>
