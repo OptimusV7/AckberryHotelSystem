@@ -72,6 +72,18 @@ namespace Hotel_Core_System.Services.Rooms
             return roomlist;
         }
 
+        public List<RoomType> GetRoomTypeList()
+        {
+            var roomTypeList = (from RoomType in _dbContext.RoomTypes
+                                select new RoomType
+                                {
+                                    Id = RoomType.Id,
+                                    Type_name = RoomType.Type_name
+
+                                }).ToList();
+            return roomTypeList;
+        }
+
         public async Task<int> UpdateRoom(Room model)
         {
             var roomdata = _dbContext.Rooms.FirstOrDefault(x => x.RoomId == model.RoomId);

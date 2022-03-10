@@ -20,7 +20,7 @@ namespace Hotel_Core_System.Utility
                 Resource = Send.Resource,
             }
            .Property(Send.FromEmail, "weefeast@gmail.com")
-           .Property(Send.FromName, "Appointment Scheduler")
+           .Property(Send.FromName, "Ackberry Hotels System")
            .Property(Send.Subject, subject)
            .Property(Send.HtmlPart, htmlMessage)
            .Property(Send.Recipients, new JArray {

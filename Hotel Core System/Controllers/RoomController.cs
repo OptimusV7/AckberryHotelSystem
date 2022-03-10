@@ -28,6 +28,7 @@ namespace Hotel_Core_System.Controllers
 
         public IActionResult createRoom()
         {
+            ViewBag.RoomTypeList = _roomService.GetRoomTypeList();
             return View("~/Views/Admin/Room/Create.cshtml");
         }
 
@@ -76,13 +77,13 @@ namespace Hotel_Core_System.Controllers
                 if (commonResponse.status > 0)
                 {
                     commonResponse.message = Helper.roomUpdated;
-                    commonResponse.status = Helper.success_code;
+                    return RedirectToAction("getAllRooms", "Room");
                 }
             }
             catch (Exception e)
             {
                 commonResponse.message = e.Message;
-                commonResponse.status = Helper.failure_code;
+                ModelState.AddModelError("", e.Message);
             }
 
             return Ok(commonResponse);

@@ -27,7 +27,7 @@ namespace Hotel_Core_System.Controllers
 
         public IActionResult index()
         {
-            return View("~/Views/Auth/AdminLogin.cshtml");
+            return View("~/Views/Auth/Login.cshtml");
         }
         public IActionResult UserRegister()
         {

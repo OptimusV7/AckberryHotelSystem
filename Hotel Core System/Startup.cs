@@ -39,7 +39,6 @@ namespace Hotel_Core_System
             services.AddScoped<IRoomService, RoomService>();
             services.AddScoped<ILoggerManager, LoggerManager>();
             services.AddScoped<IEmailSender, EmailSender>();
-            services.AddScoped<IJwtService, JwtService>();
             services.AddDistributedMemoryCache();
             services.AddSession(options =>
             {

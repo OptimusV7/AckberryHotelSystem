@@ -7,6 +7,7 @@ namespace Hotel_Core_System.Services.Rooms
     public interface IRoomService
     {
         public List<Room> GetRoomList();
+        public List<RoomType> GetRoomTypeList();
         public Task<int> UpdateRoom(Room model);
         public Task<int> DeleteRoom(int roomId);
         public Room GetRoom(int roomId);

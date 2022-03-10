@@ -40,7 +40,9 @@
                                     <div class="auth-form-wrapper px-4 py-5">
                                         <a href="#" class="noble-ui-logo d-block mb-2"><span>Ackberry UI</span></a>
                                         <h5 class="text-muted font-weight-normal mb-4">Welcome back! Log in to your account.</h5>
+
                                         <form id="account" method="post" asp-action="Login" asp-controller="Auth" class="forms-sample">
+
                                             <div asp-validation-summary="All" class="text-danger"></div>
                                             <div class="form-group">
                                                 <label asp-for="Email">Email address</label>
@@ -63,6 +65,7 @@
                                             </div>
                                             
                                         </form>
+
                                     </div>
                                 </div>
                             </div>
@@ -84,6 +87,12 @@
     <script src="~/admin/js/template.js"></script>
     <!-- endinject -->
     <!-- custom js for this page -->
-    <!-- end custom js for this page -->
+    <!-- end custom js for this page -->  
+
+@section Scripts{
+<partial name="_ValidationScriptsPartial" />
+
+}
 </body>
 </html>
+
