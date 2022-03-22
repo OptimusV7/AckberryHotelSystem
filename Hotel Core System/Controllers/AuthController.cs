@@ -49,6 +49,7 @@ namespace Hotel_Core_System.Controllers
 					if (roles.Contains(Helper.Admin))
 					{
                         HttpContext.Session.SetString("adminUserName", user.Name);
+                        HttpContext.Session.SetString("userRole", Helper.Admin);
                         return RedirectToAction("Index", "Admin");
 					}
 					else

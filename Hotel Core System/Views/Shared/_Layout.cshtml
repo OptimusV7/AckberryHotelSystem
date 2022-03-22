@@ -72,8 +72,20 @@
 						<ul>
 							@if (signInManager.IsSignedIn(User))
 							{
-								<li class = "toptext"><a class='dropdown-button' href='#' data-activates='dropdown5'>Hello, @HttpContextAccessor.HttpContext.Session.GetString("guestUserName")  <i class="fa fa-user"></i></a>
-								</li>
+                                <li class="toptext">
+                                    <a class='dropdown-button' href='#' data-activates='dropdown5'>
+                                        Welcome,
+                                        @if (HttpContextAccessor.HttpContext.User.IsInRole("Admin"))
+                                        {
+                                            @HttpContextAccessor.HttpContext.Session.GetString("adminUserName");
+                                        }
+                                        else
+                                        {
+                                            @HttpContextAccessor.HttpContext.Session.GetString("guestUserName");
+                                        }
+                                        <i class="fa fa-user"></i>
+                                    </a>
+                                </li>
 							}else{
 							<li class = "toptext"><a class='dropdown-button' href='#' data-activates='dropdown1'>My Account <i class="fa fa-angle-down"></i></a>
 							</li>
@@ -93,7 +105,7 @@
 							<ul id='dropdown5' class='dropdown-content drop-con-man'>
 
 								<form method="post" id="logoutForm" asp-action="Logoff" asp-controller="Auth">
-									<ul class="nav navbar-nav">
+									<ul class="dropdown-content drop-con-man nav navbar-nav">
 										<li><a href="javascript:document.getElementById('logoutForm').submit()">Log off</a></li>
 									</ul>
 								</form>
