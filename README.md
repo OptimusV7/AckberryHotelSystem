@@ -1,1 +1,1 @@
-Hotel Core System <b> new </b>
+Hotel Core System 
