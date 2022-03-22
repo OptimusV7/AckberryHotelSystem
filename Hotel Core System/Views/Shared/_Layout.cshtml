@@ -86,10 +86,16 @@
                                         <i class="fa fa-user"></i>
                                     </a>
                                 </li>
+								
 							}else{
 							<li class = "toptext"><a class='dropdown-button' href='#' data-activates='dropdown1'>My Account <i class="fa fa-angle-down"></i></a>
 							</li>
 							}	
+							@if (HttpContextAccessor.HttpContext.User.IsInRole("Admin"))
+                            {
+                               <li><a asp-controller="Admin" asp-action="Index">Admin Portal</a>
+								</li>
+                            }
 							<li><a asp-controller="Home" asp-action="About">About Us</a>
 							</li>
 							<li><a asp-controller="Home" asp-action="ContactUs">Contact Us</a>
@@ -105,7 +111,7 @@
 							<ul id='dropdown5' class='dropdown-content drop-con-man'>
 
 								<form method="post" id="logoutForm" asp-action="Logoff" asp-controller="Auth">
-									<ul class="dropdown-content drop-con-man nav navbar-nav">
+									<ul class="nav navbar-nav">
 										<li><a href="javascript:document.getElementById('logoutForm').submit()">Log off</a></li>
 									</ul>
 								</form>
