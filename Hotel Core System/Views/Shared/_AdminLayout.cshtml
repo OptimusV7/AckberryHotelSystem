@@ -209,7 +209,6 @@
                             </ul>
                         </div>
                     </li>
-                    <li class="nav-item nav-category">Pages</li>
                     <li class="nav-item">
                         <a class="nav-link" data-toggle="collapse" href="#general-pages" role="button" aria-expanded="false" aria-controls="general-pages">
                             <i class="link-icon" data-feather="book"></i>
@@ -239,40 +238,51 @@
                             </ul>
                         </div>
                     </li>
+                    <li class="nav-item nav-category">Admin Settings</li>
                     <li class="nav-item">
-                        <a class="nav-link" data-toggle="collapse" href="#authPages" role="button" aria-expanded="false" aria-controls="authPages">
-                            <i class="link-icon" data-feather="unlock"></i>
-                            <span class="link-title">Authentication</span>
+                        <a class="nav-link" data-toggle="collapse" href="#user-settings-pages" role="button" aria-expanded="false" aria-controls="user-settings-pages">
+                            <i class="link-icon" data-feather="user"></i>
+                            <span class="link-title">User Management</span>
                             <i class="link-arrow" data-feather="chevron-down"></i>
                         </a>
-                        <div class="collapse" id="authPages">
+                        <div class="collapse" id="user-settings-pages">
                             <ul class="nav sub-menu">
                                 <li class="nav-item">
-                                    <a href="pages/auth/login.html" class="nav-link">Login</a>
+                                    <a href="" class="nav-link">All Users</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="pages/auth/register.html" class="nav-link">Register</a>
+                                    <a href="" class="nav-link">Add Roles</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="" class="nav-link">Add Permissions</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="" class="nav-link">Add Users</a>
                                 </li>
                             </ul>
                         </div>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" data-toggle="collapse" href="#errorPages" role="button" aria-expanded="false" aria-controls="errorPages">
-                            <i class="link-icon" data-feather="cloud-off"></i>
-                            <span class="link-title">Error</span>
+                        <a class="nav-link" data-toggle="collapse" href="#site-settings" role="button" aria-expanded="false" aria-controls="site-settings">
+                            <i class="link-icon" data-feather="globe"></i>
+                            <span class="link-title">Site Settings</span>
                             <i class="link-arrow" data-feather="chevron-down"></i>
                         </a>
-                        <div class="collapse" id="errorPages">
+                        <div class="collapse" id="site-settings">
                             <ul class="nav sub-menu">
                                 <li class="nav-item">
-                                    <a href="pages/error/404.html" class="nav-link">404</a>
+                                    <a href="pages/auth/login.html" class="nav-link">Email</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="pages/error/500.html" class="nav-link">500</a>
+                                    <a href="pages/auth/register.html" class="nav-link">Payment Methods</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="pages/auth/register.html" class="nav-link">SMS</a>
                                 </li>
                             </ul>
                         </div>
                     </li>
+                    
                     
                 </ul>
             </div>
@@ -352,7 +362,7 @@
                                 <div class="dropdown-body">
                                     <ul class="profile-nav p-0 pt-3">
                                         <li class="nav-item">
-                                            <a asp-controller="Home" asp-action="Index"class="nav-link">
+                                            <a asp-controller="Home" asp-action="Index" class="nav-link">
                                                 <i data-feather="globe"></i>
                                                 <span>Website</span>
                                             </a>
