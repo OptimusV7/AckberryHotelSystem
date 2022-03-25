@@ -28,7 +28,7 @@ namespace Hotel_Core_System.Controllers
             return View("~/Views/Admin/Role/Create.cshtml");
         }
 
-        public IActionResult PermissionAll()
+        public IActionResult PermissionsAll()
         {
             return View("~/Views/Admin/Permission/Index.cshtml");
         }
@@ -37,5 +37,21 @@ namespace Hotel_Core_System.Controllers
         {
             return View("~/Views/Admin/Permission/Create.cshtml");
         }
+
+        public IActionResult Email()
+        {
+            return View("~/Views/Admin/Email/Index.cshtml");
+        }
+
+        public IActionResult SMS()
+        {
+            return View("~/Views/Admin/SMS/Index.cshtml");
+        }
+
+        public IActionResult Payment()
+        {
+            return View("~/Views/Admin/Payment/Index.cshtml");
+        }
+
     }
 }
