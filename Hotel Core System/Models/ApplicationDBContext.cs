@@ -20,5 +20,23 @@ namespace Hotel_Core_System.Models
         public DbSet<Room> Rooms { get; set; }
         public DbSet<Booking> Bookings { get; set; }
         public DbSet<MpesaCallback> MpesaCallbacks { get; set; }
+
+        protected override void OnModelCreating(ModelBuilder builder)
+        {
+            base.OnModelCreating(builder);
+
+            builder.Entity<ApplicationUserRole>(userRole =>
+            {
+                userRole.HasKey(ur => new { ur.UserId, ur.RoleId });
+
+                userRole.HasOne(ur => ur.Role)
+                    .WithMany(r => r.UserRoles)
+                    .HasForeignKey(ur => ur.RoleId);
+
+                userRole.HasOne(ur => ur.User)
+                    .WithMany(r => r.UserRoles)
+                    .HasForeignKey(ur => ur.UserId);
+            });
+        }
     }
 }
