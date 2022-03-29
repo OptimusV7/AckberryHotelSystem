@@ -1,4 +1,5 @@
 ﻿using Hotel_Core_System.Models;
+using Hotel_Core_System.Models.ViewModels;
 using Hotel_Core_System.Utility;
 using System.Collections.Generic;
 using System.Linq;
@@ -42,11 +43,12 @@ namespace Hotel_Core_System.Services.Users
                              Id = user.Id,
                              Name = user.Name,
                              Email = user.Email
-
+                             
                          }
                            ).ToList();
             return users;
         }
+        
 
         public async Task<int> Update(ApplicationUser model)
         {

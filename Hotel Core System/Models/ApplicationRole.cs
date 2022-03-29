@@ -3,10 +3,8 @@ using System.Collections.Generic;
 
 namespace Hotel_Core_System.Models
 {
-    public class ApplicationUser : IdentityUser
+    public class ApplicationRole : IdentityRole
     {
-        public string Name { get; set; }
-
         public ICollection<ApplicationUserRole> UserRoles { get; set; }
     }
 }

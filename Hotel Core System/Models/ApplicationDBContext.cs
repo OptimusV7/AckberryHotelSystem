@@ -1,9 +1,11 @@
-﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
 namespace Hotel_Core_System.Models
 {
-    public class ApplicationDBContext : IdentityDbContext<ApplicationUser>
+    public class ApplicationDBContext : IdentityDbContext<ApplicationUser , ApplicationRole, string, IdentityUserClaim<string>,
+        ApplicationUserRole, IdentityUserLogin<string>, IdentityRoleClaim<string>, IdentityUserToken<string>>
     {
         public ApplicationDBContext(DbContextOptions<ApplicationDBContext> options) : base(options) 
         {
