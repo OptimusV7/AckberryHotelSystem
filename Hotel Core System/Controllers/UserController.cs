@@ -1,5 +1,6 @@
 ﻿using Hotel_Core_System.Models;
 using Hotel_Core_System.Models.ViewModels;
+using Hotel_Core_System.Services.Users;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -13,26 +14,18 @@ namespace Hotel_Core_System.Controllers
     {
         private readonly ApplicationDBContext _db;
         UserManager<ApplicationUser> _userManager;
+        private readonly IUserService _userService;
 
-        public UserController(ApplicationDBContext _context, UserManager<ApplicationUser> userManager)
+        public UserController(ApplicationDBContext _context, UserManager<ApplicationUser> userManager, IUserService userService)
         {
             _db = _context;
             _userManager = userManager;
+            _userService = userService;
         }
 
         public IActionResult UsersAll()
         {
-            var users = (from user in _db.Users
-                         select new ApplicationUser
-                         {
-                             Id = user.Id,
-                             Name = user.Name,
-                             Email = user.Email,
-                             PhoneNumber = user.PhoneNumber,
-                             EmailConfirmed = user.EmailConfirmed,
-                             PhoneNumberConfirmed = user.PhoneNumberConfirmed,  
-                         }
-                           ).ToList();
+            var users = _userService.GetUsersAll();
 
             return View("~/Views/Admin/User/Index.cshtml", users);
         }

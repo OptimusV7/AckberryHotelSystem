@@ -48,7 +48,23 @@ namespace Hotel_Core_System.Services.Users
                            ).ToList();
             return users;
         }
-        
+
+        public List<ApplicationUser> GetUsersAll()
+        {
+            var users = (from user in _db.Users
+                         select new ApplicationUser
+                         {
+                             Id = user.Id,
+                             Name = user.Name,
+                             Email = user.Email,
+                             PhoneNumber = user.PhoneNumber,
+                             EmailConfirmed = user.EmailConfirmed,
+                             PhoneNumberConfirmed = user.PhoneNumberConfirmed,
+                         }
+                           ).ToList();
+            return users;
+        }
+
 
         public async Task<int> Update(ApplicationUser model)
         {
