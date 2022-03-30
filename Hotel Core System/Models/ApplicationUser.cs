@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using System.Collections.Generic;
+using static Hotel_Core_System.Models.ApplicationDBContext;
 
 namespace Hotel_Core_System.Models
 {
@@ -7,6 +8,8 @@ namespace Hotel_Core_System.Models
     {
         public string Name { get; set; }
 
-        public ICollection<ApplicationUserRole> UserRoles { get; set; }
+        //public string PhoneNumber { get; set; }
+        //public virtual ICollection<UserRole> UserRoles { get; set; }
+
     }
 }

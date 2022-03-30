@@ -2,6 +2,7 @@
 using Hotel_Core_System.Models.ViewModels;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -21,18 +22,19 @@ namespace Hotel_Core_System.Controllers
 
         public IActionResult UsersAll()
         {
-            var userlist = (from user in _db.Users
-                            select new AccountVM
-                            {
-                                Id = user.Id,
-                                UserName = user.UserName,
-                                Name = user.Name,
-                                Email = user.Email,
-                                EmailConfirmed = user.EmailConfirmed,
-                                Phone = user.PhoneNumber
-                            }).ToList();
+            var users = (from user in _db.Users
+                         select new ApplicationUser
+                         {
+                             Id = user.Id,
+                             Name = user.Name,
+                             Email = user.Email,
+                             PhoneNumber = user.PhoneNumber,
+                             EmailConfirmed = user.EmailConfirmed,
+                             PhoneNumberConfirmed = user.PhoneNumberConfirmed,  
+                         }
+                           ).ToList();
 
-            return View("~/Views/Admin/User/Index.cshtml", userlist);
+            return View("~/Views/Admin/User/Index.cshtml", users);
         }
 
         public IActionResult UsersCreate()

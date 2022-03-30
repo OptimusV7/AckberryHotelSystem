@@ -1,9 +1,9 @@
-﻿@using Hotel_Core_System.Models.ViewModels
+﻿
 @{
     ViewData["Title"] = "Admin All Rooms";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
-@model IEnumerable<AccountVM>  
+ @model IEnumerable<ApplicationUser>
 
 
 <nav class="page-breadcrumb">
@@ -24,27 +24,23 @@
                         <thead>
                             <tr>
                                 <th>Name</th>
-                                <th>Role</th>
-                                <th>Username</th>
                                 <th>Email</th>
                                 <th>Confirmed Email</th>
                                 <th>Phone</th>
+                                <th>Confirmed Phone</th>
                             </tr>
                         </thead>
                         <tbody>
                             @foreach( var user in Model)
                             {
                                 <tr>
-                                <td>@user.Name</td>
-                                <td>@user.RoleName</td>
-                                <td>@user.UserName</td>
+                                <td>@user.Name</td>                                
                                 <td>@user.Email</td>
                                 <td>@user.EmailConfirmed</td>
-                                <td>@user.Phone</td>
+                                <td>@user.PhoneNumber</td>
+                                <td>@user.PhoneNumberConfirmed</td>
                                 </tr>
-                            }
-                            
-                             
+                            }  
                         </tbody>
                     </table>
                 </div>

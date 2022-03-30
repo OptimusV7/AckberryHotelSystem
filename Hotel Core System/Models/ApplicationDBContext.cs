@@ -1,11 +1,12 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using System.Collections.Generic;
+using static Hotel_Core_System.Models.ApplicationDBContext;
 
 namespace Hotel_Core_System.Models
 {
-    public class ApplicationDBContext : IdentityDbContext<ApplicationUser , ApplicationRole, string, IdentityUserClaim<string>,
-        ApplicationUserRole, IdentityUserLogin<string>, IdentityRoleClaim<string>, IdentityUserToken<string>>
+    public class ApplicationDBContext : IdentityDbContext<ApplicationUser>
     {
         public ApplicationDBContext(DbContextOptions<ApplicationDBContext> options) : base(options) 
         {
@@ -21,22 +22,42 @@ namespace Hotel_Core_System.Models
         public DbSet<Booking> Bookings { get; set; }
         public DbSet<MpesaCallback> MpesaCallbacks { get; set; }
 
-        protected override void OnModelCreating(ModelBuilder builder)
+        //protected override void OnModelCreating(ModelBuilder builder)
+        //{
+        //    base.OnModelCreating(builder);
+
+        //    builder.Entity<ApplicationUser>(b =>
+        //    {
+        //        b.HasMany(e => e.UserRoles)
+        //        .WithOne(e => e.User)
+        //        .HasForeignKey(ur => ur.UserId)
+        //        .IsRequired();
+        //    });
+
+        //    builder.Entity<Role>(b =>
+        //    {
+        //        b.HasMany(e => e.UserRoles)
+        //            .WithOne(e => e.Role)
+        //            .HasForeignKey(ur => ur.RoleId)
+        //            .IsRequired();
+        //    });
+        //}
+
+        /*public class User : IdentityUser
         {
-            base.OnModelCreating(builder);
+            public string Name { get; set; }
+            public virtual ICollection<UserRole> UserRoles { get; set; }
+        }*/
 
-            builder.Entity<ApplicationUserRole>(userRole =>
-            {
-                userRole.HasKey(ur => new { ur.UserId, ur.RoleId });
+        //public class UserRole : IdentityUserRole<string>
+        //{
+        //    public virtual ApplicationUser User { get; set; }
+        //    public virtual Role Role { get; set; }
+        //}
 
-                userRole.HasOne(ur => ur.Role)
-                    .WithMany(r => r.UserRoles)
-                    .HasForeignKey(ur => ur.RoleId);
-
-                userRole.HasOne(ur => ur.User)
-                    .WithMany(r => r.UserRoles)
-                    .HasForeignKey(ur => ur.UserId);
-            });
-        }
+        //public class Role : IdentityRole
+        //{
+        //    public virtual ICollection<UserRole> UserRoles { get; set; }
+        //}
     }
 }
