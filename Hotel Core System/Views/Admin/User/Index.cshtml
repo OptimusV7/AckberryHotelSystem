@@ -16,12 +16,11 @@
 <div class="d-flex justify-content-right align-items-center flex-wrap grid-margin">
     
     <div class="d-flex align-items-center flex-wrap text-nowrap">
-        
-        <button type="button" class="btn btn-outline-primary btn-icon-text mr-2 mb-2 mb-md-0">
-            <i class="btn-icon-prepend" data-feather="user"></i>
-            Add User
-        </button>
-        
+        <a asp-controller="User" asp-action="AddUser" 
+            type="button" class="btn btn-primary btn-icon-text mb-2 mb-md-0">
+           <i class="btn-icon-prepend" data-feather="user"></i>
+                Add User
+        </a>
     </div>
 </div>
 

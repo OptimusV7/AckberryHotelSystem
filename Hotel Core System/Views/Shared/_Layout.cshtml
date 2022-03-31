@@ -34,7 +34,7 @@
 		<div class="mm">
 			<div class="mm-inn">
 				<div class="mm-logo">
-					<a href="main.html"><img src="~/theme/images/logo.png" alt="">
+					<a asp-controller="Home" asp-action="Index"><img src="~/theme/images/logo.png" alt="">
 					</a>
 				</div>
 				<div class="mm-icon"><span><i class="fa fa-bars show-menu" aria-hidden="true"></i></span>
@@ -42,22 +42,52 @@
 				<div class="mm-menu">
 					<div class="mm-close"><span><i class="fa fa-times hide-menu" aria-hidden="true"></i></span>
 					</div>
-					<ul>
-						<li><a asp-controller="Home" asp-action="Index">Home</a>
-						</li>
-						<li><a asp-controller="Room" asp-action="Index">Room</a>
-						</li>
-						<li><a asp-controller="" asp-action="">Services</a>
-						</li>
-						<li><a asp-controller="Home" asp-action="About">About Us</a>
-						</li>
-						<li><a asp-controller="Home" asp-action="ContactUs">Contact Us</a>
-						</li>
-						<li><a asp-controller="Auth" asp-action="index">Login</a>
-						</li>
-						<li><a asp-controller="Auth" asp-action="UserRegister">Register</a>
-						</li>
-					</ul>
+                    <ul>
+                        <li>
+                            <a asp-controller="Home" asp-action="Index">Home</a>
+                        </li>
+                        <li>
+                            <a asp-controller="Room" asp-action="Index">Room</a>
+                        </li>
+                        <li>
+                            <a asp-controller="" asp-action="">Services</a>
+                        </li>
+                        <li>
+                            <a asp-controller="Home" asp-action="About">About Us</a>
+                        </li>
+                        <li>
+                            <a asp-controller="Home" asp-action="ContactUs">Contact Us</a>
+                        </li>
+                        @if (HttpContextAccessor.HttpContext.User.IsInRole("Admin"))
+                        {
+                            <li><a asp-controller="Admin" asp-action="Index">Admin Portal</a></li>
+                        }
+						else{
+							<li><a asp-controller="Admin" asp-action="Index">User Portal</a></li>
+						}
+                        @if (!signInManager.IsSignedIn(User))
+                        {
+                            <li>
+                                <a asp-controller="Auth" asp-action="UserRegister"><img src="~/theme/images/icon/5.png" alt=""> Register</a>
+                            </li>
+                            <li>
+                                <a asp-controller="Auth" asp-action="index"><img src="~/theme/images/icon/6.png" alt=""> Log In</a>
+                            </li>
+
+
+                        }
+                        else
+                        {
+
+                            <li>
+                                <form method="post" id="logoutForm" asp-action="Logoff" asp-controller="Auth">
+                                    <a href="javascript:document.getElementById('logoutForm').submit()">Sign Out</a>
+                                </form>
+                            </li>
+
+                        }
+
+                    </ul>
 				</div>
 			</div>
 		</div>

@@ -30,7 +30,7 @@ namespace Hotel_Core_System.Controllers
             return View("~/Views/Admin/User/Index.cshtml", users);
         }
 
-        public IActionResult UsersCreate()
+        public IActionResult AddUser()
         {
             return View("~/Views/Admin/User/Create.cshtml");
         }
