@@ -1,5 +1,68 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
+﻿@{
+    ViewData["Title"] = "Add Users";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
+
+<nav class="page-breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a asp-controller="User" asp-action="UsersAll">Users</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Add Users</li>
+    </ol>
+</nav>
+
+
+
+<div class="row">
+    <div class="col-md-12 grid-margin stretch-card">
+        <div class="card">
+            <div class="card-body">
+                <h6 class="card-title">Create New User</h6>
+                <form>
+                    <div class="form-group">
+                        <label for="exampleInputText1">Name</label>
+                        <input type="text" class="form-control" id="exampleInputText1" value="Amiah Burton" placeholder="Enter Name">
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputEmail3">Email</label>
+                        <input type="email" class="form-control" id="exampleInputEmail3" value="amiahburton@gmail.com" placeholder="Enter Valid Email">
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputNumber1">Phone Number</label>
+                        <input type="number" class="form-control" id="exampleInputNumber1" value="0700-00-00-00">
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputPassword3">Password Input</label>
+                        <input type="password" class="form-control" id="exampleInputPassword3" value="amiahburton" placeholder="Enter Password">
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputPassword3">Confirm Password</label>
+                        <input type="password" class="form-control" id="exampleInputPassword3" value="amiahburton" placeholder="Enter Password">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Profile Image upload</label>
+                        <input type="file" name="img[]" class="file-upload-default">
+                        <div class="input-group col-xs-12">
+                            <input type="text" class="form-control file-upload-info" disabled="" placeholder="Upload Image">
+                            <span class="input-group-append">
+                                <button class="file-upload-browse btn btn-primary" type="button">Upload</button>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Assign Role</label>
+                        <select id="roleId" asp-items="@(new SelectList(ViewBag.RoleList, "Id", "Name"))" class="class="js-example-basic-single w-100""></select>
+                    </div>
+                   
+                    <div class="form-group">
+                        <label for="exampleFormControlTextarea1">Welcome Message</label>
+                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="5"></textarea>
+                    </div>
+                    
+                    
+                    <button class="btn btn-primary" type="submit">Submit form</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

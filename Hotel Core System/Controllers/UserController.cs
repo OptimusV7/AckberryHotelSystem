@@ -2,6 +2,7 @@
 using Hotel_Core_System.Models.ViewModels;
 using Hotel_Core_System.Services.Users;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
@@ -15,12 +16,14 @@ namespace Hotel_Core_System.Controllers
         private readonly ApplicationDBContext _db;
         UserManager<ApplicationUser> _userManager;
         private readonly IUserService _userService;
+        RoleManager<IdentityRole> _roleManager;
 
-        public UserController(ApplicationDBContext _context, UserManager<ApplicationUser> userManager, IUserService userService)
+        public UserController(ApplicationDBContext _context, UserManager<ApplicationUser> userManager, IUserService userService, RoleManager<IdentityRole> roleManager)
         {
             _db = _context;
             _userManager = userManager;
             _userService = userService;
+            _roleManager = roleManager;
         }
 
         public IActionResult UsersAll()
@@ -32,6 +35,7 @@ namespace Hotel_Core_System.Controllers
 
         public IActionResult AddUser()
         {
+            ViewBag.RoleList = _roleManager.Roles.ToList();
             return View("~/Views/Admin/User/Create.cshtml");
         }
         public IActionResult RolesAll()
