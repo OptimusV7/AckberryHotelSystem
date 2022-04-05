@@ -3,6 +3,7 @@ using Hotel_Core_System.DBInitializer;
 using Hotel_Core_System.Models;
 using Hotel_Core_System.Services.Jwt;
 using Hotel_Core_System.Services.LogManagerConf;
+using Hotel_Core_System.Services.Messages;
 using Hotel_Core_System.Services.Rooms;
 using Hotel_Core_System.Services.Users;
 using Hotel_Core_System.Utility;
@@ -37,6 +38,7 @@ namespace Hotel_Core_System
             services.AddScoped<IDbInitializer, DbInitialize>();
             services.AddScoped<IUserService, UserService>();
             services.AddScoped<IRoomService, RoomService>();
+            services.AddScoped<IMessageService, MessageService>();
             services.AddScoped<ILoggerManager, LoggerManager>();
             services.AddScoped<IEmailSender, EmailSender>();
             services.AddDistributedMemoryCache();

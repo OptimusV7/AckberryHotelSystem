@@ -1,4 +1,5 @@
-﻿@{
+﻿@model Hotel_Core_System.Models.ViewModels.UserAddVM
+@{
     ViewData["Title"] = "Add Users";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
@@ -17,46 +18,55 @@
         <div class="card">
             <div class="card-body">
                 <h6 class="card-title">Create New User</h6>
-                <form>
+                <form method="post" enctype="multipart/form-data" asp-controller="User" asp-action="PostUser">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                     <div class="form-group">
-                        <label for="exampleInputText1">Name</label>
-                        <input type="text" class="form-control" id="exampleInputText1" value="Amiah Burton" placeholder="Enter Name">
+                        @Html.LabelFor(model => model.Name)
+                        <input type="text" asp-for="Name" class="form-control" placeholder="Enter Name">
+                        <span asp-validation-for="Name" class="text-danger"></span>
                     </div>
                     <div class="form-group">
-                        <label for="exampleInputEmail3">Email</label>
-                        <input type="email" class="form-control" id="exampleInputEmail3" value="amiahburton@gmail.com" placeholder="Enter Valid Email">
+                        @Html.LabelFor(model => model.Email)
+                        <input type="email" asp-for="Email" class="form-control" placeholder="Enter Valid Email">
+                        <span asp-validation-for="Email" class="text-danger"></span>
                     </div>
                     <div class="form-group">
-                        <label for="exampleInputNumber1">Phone Number</label>
-                        <input type="number" class="form-control" id="exampleInputNumber1" value="0700-00-00-00">
+                        @Html.LabelFor(model => model.PhoneNumber)
+                        <input type="number" asp-for="PhoneNumber" class="form-control"  >
+                        <span asp-validation-for="PhoneNumber" class="text-danger"></span>
                     </div>
                     <div class="form-group">
-                        <label for="exampleInputPassword3">Password Input</label>
-                        <input type="password" class="form-control" id="exampleInputPassword3" value="amiahburton" placeholder="Enter Password">
+                        @Html.LabelFor(model => model.Password)
+                        <input type="password" asp-for="Password" class="form-control" placeholder="Enter Password">
+                        <span asp-validation-for="Password" class="text-danger"></span>
                     </div>
                     <div class="form-group">
-                        <label for="exampleInputPassword3">Confirm Password</label>
-                        <input type="password" class="form-control" id="exampleInputPassword3" value="amiahburton" placeholder="Enter Password">
+                        @Html.LabelFor(model => model.ConfirmPassword)
+                        <input type="password" asp-for="ConfirmPassword" class="form-control" placeholder="Enter Password">
+                        <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
                     </div>
 
                     <div class="form-group">
-                        <label>Profile Image upload</label>
-                        <input type="file" name="img[]" class="file-upload-default">
+                        @Html.LabelFor(model => model.imageName)
+                        @*<input type="file" asp-for="ImageFile" class="file-upload-default">*@
                         <div class="input-group col-xs-12">
-                            <input type="text" class="form-control file-upload-info" disabled="" placeholder="Upload Image">
+                            <input type="file" asp-for="ImageFile"  class="form-control file-upload-info" accept="image/*">
                             <span class="input-group-append">
                                 <button class="file-upload-browse btn btn-primary" type="button">Upload</button>
                             </span>
+                            <span asp-validation-for="ImageFile" class="text-danger"></span>
                         </div>
                     </div>
                     <div class="form-group">
-                        <label>Assign Role</label>
-                        <select id="roleId" asp-items="@(new SelectList(ViewBag.RoleList, "Id", "Name"))" class="class="js-example-basic-single w-100""></select>
+                        @Html.LabelFor(model => model.roleName)
+                        <select asp-for="roleName" asp-items="@(new SelectList(ViewBag.RoleList, "Id", "Name"))" class="js-example-basic-single w-100"></select>
+                        <span asp-validation-for="roleName" class="text-danger"></span>
                     </div>
                    
                     <div class="form-group">
-                        <label for="exampleFormControlTextarea1">Welcome Message</label>
-                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="5"></textarea>
+                        @Html.LabelFor(model => model.Message)
+                        <textarea class="form-control" asp-for="Message" id="exampleFormControlTextarea1" rows="5"></textarea>
+                        
                     </div>
                     
                     
