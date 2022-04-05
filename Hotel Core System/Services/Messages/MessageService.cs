@@ -21,7 +21,9 @@ namespace Hotel_Core_System.Services.Messages
                 Recipient = message.Recipient,
             };
             _dbContext.Messages.Add(mes);
-            var mess = _dbContext.Messages.FindAsync(message.Id);
+            await _dbContext.SaveChangesAsync();
+            //TODO: Separate status save
+            var mess = _dbContext.Messages.FindAsync(message.Message_txt);
             var mesStatus = new MessageStatus
             {
                 Message_Status_Name = "Sent",

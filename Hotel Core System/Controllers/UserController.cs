@@ -60,7 +60,7 @@ namespace Hotel_Core_System.Controllers
                 string extension = Path.GetExtension(model.ImageFile.FileName);
                 fileName = fileName + DateTime.Now.ToString("yymmssfff") + extension;
                 model.imageName = fileName;
-                string path = Path.Combine(wwwRootPath + "/image/", fileName);
+                string path = Path.GetFullPath(Path.Combine(wwwRootPath + "/images/", fileName)).Replace(@"\\", @"\"); ;
                 using (var fileStream = new FileStream(path, FileMode.Create))
                 {
                     await model.ImageFile.CopyToAsync(fileStream);
