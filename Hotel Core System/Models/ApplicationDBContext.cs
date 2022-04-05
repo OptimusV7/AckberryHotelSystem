@@ -1,8 +1,5 @@
-﻿using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
-using System.Collections.Generic;
-using static Hotel_Core_System.Models.ApplicationDBContext;
 
 namespace Hotel_Core_System.Models
 {
@@ -21,43 +18,9 @@ namespace Hotel_Core_System.Models
         public DbSet<Room> Rooms { get; set; }
         public DbSet<Booking> Bookings { get; set; }
         public DbSet<MpesaCallback> MpesaCallbacks { get; set; }
+        public DbSet <MessageStatus> MessageStatuses { get; set; }
+        public DbSet <Message> Messages { get; set; }
 
-        //protected override void OnModelCreating(ModelBuilder builder)
-        //{
-        //    base.OnModelCreating(builder);
 
-        //    builder.Entity<ApplicationUser>(b =>
-        //    {
-        //        b.HasMany(e => e.UserRoles)
-        //        .WithOne(e => e.User)
-        //        .HasForeignKey(ur => ur.UserId)
-        //        .IsRequired();
-        //    });
-
-        //    builder.Entity<Role>(b =>
-        //    {
-        //        b.HasMany(e => e.UserRoles)
-        //            .WithOne(e => e.Role)
-        //            .HasForeignKey(ur => ur.RoleId)
-        //            .IsRequired();
-        //    });
-        //}
-
-        /*public class User : IdentityUser
-        {
-            public string Name { get; set; }
-            public virtual ICollection<UserRole> UserRoles { get; set; }
-        }*/
-
-        //public class UserRole : IdentityUserRole<string>
-        //{
-        //    public virtual ApplicationUser User { get; set; }
-        //    public virtual Role Role { get; set; }
-        //}
-
-        //public class Role : IdentityRole
-        //{
-        //    public virtual ICollection<UserRole> UserRoles { get; set; }
-        //}
     }
 }
