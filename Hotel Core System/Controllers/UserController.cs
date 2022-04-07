@@ -60,7 +60,7 @@ namespace Hotel_Core_System.Controllers
                 string extension = Path.GetExtension(model.ImageFile.FileName);
                 fileName = fileName + DateTime.Now.ToString("yymmssfff") + extension;
                 model.imageName = fileName;
-                string path = Path.GetFullPath(Path.Combine(wwwRootPath + "/images/", fileName)).Replace(@"\\", @"\"); ;
+                string path = Path.GetFullPath(Path.Combine(wwwRootPath + "/images/", fileName)).Replace(@"\\", @"\");
                 using (var fileStream = new FileStream(path, FileMode.Create))
                 {
                     await model.ImageFile.CopyToAsync(fileStream);
@@ -71,6 +71,7 @@ namespace Hotel_Core_System.Controllers
                     UserName = model.Email,
                     Email = model.Email,
                     Name = model.Name,
+                    PhoneNumber = model.PhoneNumber,
                     img_url = model.imageName
                 };
 
@@ -86,7 +87,11 @@ namespace Hotel_Core_System.Controllers
                 var role = model.roleName;
                 var roleResult = _db.Roles.FindAsync(role);
                 var result = await _userManager.CreateAsync(user, model.Password);
-                if (result.Succeeded && messageResult.IsCompleted)
+
+                //save message status
+                var messageStatusResult = _messageService.AddMessageStatus(messReq); 
+
+                if (result.Succeeded )
                 {
                     await _userManager.AddToRoleAsync(user, roleResult.Result.Name);
 

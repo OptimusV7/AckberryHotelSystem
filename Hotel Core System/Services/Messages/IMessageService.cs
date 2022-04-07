@@ -7,5 +7,6 @@ namespace Hotel_Core_System.Services.Messages
     {
         public Task<int> AddMessage(Message message);
         public Task<int> UpdateMessage(Message message);
+        public Task<int> AddMessageStatus(Message message);
     }
 }

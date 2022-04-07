@@ -1,5 +1,6 @@
 ﻿using Hotel_Core_System.Models;
 using Hotel_Core_System.Services.LogManagerConf;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace Hotel_Core_System.Services.Messages
@@ -14,20 +15,27 @@ namespace Hotel_Core_System.Services.Messages
             _logger = logger;
         }
         public async Task<int> AddMessage(Message message)
-        {
-            var mes = new Message
+        {           
+            _dbContext.Messages.Add(message);           
+
+            var results = await _dbContext.SaveChangesAsync();
+            if (results > 0)
             {
-                Message_txt = message.Message_txt,
-                Recipient = message.Recipient,
-            };
-            _dbContext.Messages.Add(mes);
-            await _dbContext.SaveChangesAsync();
-            //TODO: Separate status save
-            var mess = _dbContext.Messages.FindAsync(message.Message_txt);
+                _logger.LogInformation(results.ToString());
+                return (int)TaskStatus.RanToCompletion;
+            }
+            _logger.LogInformation(results.ToString());
+            //return 200;
+            return (int)TaskStatus.Faulted;
+        }
+
+        public async Task<int> AddMessageStatus(Message message)
+        {
+            var messageData = _dbContext.Messages.FirstOrDefault(x => x.Message_txt == message.Message_txt);
             var mesStatus = new MessageStatus
             {
                 Message_Status_Name = "Sent",
-                MessageId = mess.Result.Id,
+                MessageId = messageData.Id,
             };
             _dbContext.MessageStatuses.Add(mesStatus);
 
@@ -35,9 +43,10 @@ namespace Hotel_Core_System.Services.Messages
             if (results > 0)
             {
                 _logger.LogInformation(results.ToString());
+                return (int)TaskStatus.RanToCompletion;
             }
             _logger.LogInformation(results.ToString());
-            return 200;
+            return (int)TaskStatus.Faulted;
         }
 
         public Task<int> UpdateMessage(Message message)

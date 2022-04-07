@@ -9,7 +9,6 @@ namespace Hotel_Core_System.Models
         public int Id { get; set; }
         public string Message_Status_Name { get; set; }
         public Message Message { get; set; }
-        [NotMapped]
         public int MessageId { get; set; }
     }
 }

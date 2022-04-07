@@ -10,6 +10,6 @@ namespace Hotel_Core_System.Models
         public int Id { get; set; }
         public string  Message_txt { get; set; }
         public string Recipient { get; set; }
-        public ICollection<MessageStatus> MessageStatuses { get; set; }
+
     }
 }
