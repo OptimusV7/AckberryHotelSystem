@@ -59,6 +59,10 @@ namespace Hotel_Core_System.Controllers
                     }
                     
                 }
+                if (result.IsNotAllowed)
+                {
+                    ModelState.AddModelError("Verification", "Check you Email and Verify you account");
+                }
                 ModelState.AddModelError("", "Invalid Login Attempt");
             }
 
@@ -112,7 +116,21 @@ namespace Hotel_Core_System.Controllers
 
         }
 
-        
+        [HttpGet]
+        public async Task<IActionResult> ConfirmEmail(string token, string email)
+        {
+            var user = await _userManager.FindByEmailAsync(email);
+            if (user == null)
+                return View("~/Views/Shared/Error.cshtml");
+            var result = await _userManager.ConfirmEmailAsync(user, token);
+            return View(result.Succeeded ? nameof(ConfirmEmail) : "Error");
+        }
+
+        [HttpGet]
+        public IActionResult Error()
+        {
+            return View("~/Views/Shared/Error.cshtml");
+        }
         public async Task<IActionResult> LogOff()
         {
             await _signInManager.SignOutAsync();

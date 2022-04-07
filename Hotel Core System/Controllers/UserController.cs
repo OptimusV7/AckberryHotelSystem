@@ -4,6 +4,7 @@ using Hotel_Core_System.Services.Messages;
 using Hotel_Core_System.Services.Users;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.IO;
@@ -20,9 +21,10 @@ namespace Hotel_Core_System.Controllers
         RoleManager<IdentityRole> _roleManager;
         private readonly IWebHostEnvironment _hostEnvironment;
         private readonly IMessageService _messageService;
+        private readonly IEmailSender _emailSender;
 
         public UserController(ApplicationDBContext _context, UserManager<ApplicationUser> userManager, IUserService userService, RoleManager<IdentityRole> roleManager,
-            IWebHostEnvironment hostEnvironment, IMessageService messageService)
+            IWebHostEnvironment hostEnvironment, IMessageService messageService, IEmailSender emailSender)
         {
             _db = _context;
             _userManager = userManager;
@@ -30,6 +32,7 @@ namespace Hotel_Core_System.Controllers
             _roleManager = roleManager;
             _hostEnvironment = hostEnvironment;
             _messageService = messageService;
+            _emailSender = emailSender;
         }
 
         public IActionResult UsersAll()
@@ -94,6 +97,15 @@ namespace Hotel_Core_System.Controllers
                 if (result.Succeeded )
                 {
                     await _userManager.AddToRoleAsync(user, roleResult.Result.Name);
+
+                    //send email confirmation
+                    var token = await _userManager.GenerateEmailConfirmationTokenAsync(user);
+                    var confirmationLink = Url.Action("ConfirmEmail", "Auth", new { token, email = user.Email }, Request.Scheme);
+
+                    await _emailSender.SendEmailAsync(user.Email, "Account Created",
+                            $"You can use your email {user.Email} and password {model.Password} to access the " +
+                            $"account once you have confirmed your account here ->" +
+                            $" {confirmationLink}");
 
                     return RedirectToAction("UsersAll", "User");
                 }
