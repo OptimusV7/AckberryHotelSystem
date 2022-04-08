@@ -1,6 +1,7 @@
 ﻿using Hotel_Core_System.Models;
 using Hotel_Core_System.Models.ViewModels;
 using Hotel_Core_System.Services.Messages;
+using Hotel_Core_System.Services.Roles;
 using Hotel_Core_System.Services.Users;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity;
@@ -22,9 +23,10 @@ namespace Hotel_Core_System.Controllers
         private readonly IWebHostEnvironment _hostEnvironment;
         private readonly IMessageService _messageService;
         private readonly IEmailSender _emailSender;
+        private readonly IRoleService _roleService;
 
         public UserController(ApplicationDBContext _context, UserManager<ApplicationUser> userManager, IUserService userService, RoleManager<IdentityRole> roleManager,
-            IWebHostEnvironment hostEnvironment, IMessageService messageService, IEmailSender emailSender)
+            IWebHostEnvironment hostEnvironment, IMessageService messageService, IEmailSender emailSender, IRoleService roleService)
         {
             _db = _context;
             _userManager = userManager;
@@ -33,6 +35,7 @@ namespace Hotel_Core_System.Controllers
             _hostEnvironment = hostEnvironment;
             _messageService = messageService;
             _emailSender = emailSender;
+            _roleService = roleService;
         }
 
         public IActionResult UsersAll()
@@ -118,7 +121,8 @@ namespace Hotel_Core_System.Controllers
         }
         public IActionResult RolesAll()
         {
-            return View("~/Views/Admin/Role/Index.cshtml");
+            var roles = _roleService.GetAllRoles();
+            return View("~/Views/Admin/Role/Index.cshtml", roles);
         }
 
         public IActionResult RolesCreate()

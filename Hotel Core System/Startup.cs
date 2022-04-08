@@ -4,6 +4,7 @@ using Hotel_Core_System.Models;
 using Hotel_Core_System.Services.Jwt;
 using Hotel_Core_System.Services.LogManagerConf;
 using Hotel_Core_System.Services.Messages;
+using Hotel_Core_System.Services.Roles;
 using Hotel_Core_System.Services.Rooms;
 using Hotel_Core_System.Services.Users;
 using Hotel_Core_System.Utility;
@@ -49,6 +50,7 @@ namespace Hotel_Core_System
             services.AddScoped<IMessageService, MessageService>();
             services.AddScoped<ILoggerManager, LoggerManager>();
             services.AddScoped<IEmailSender, EmailSender>();
+            services.AddScoped<IRoleService, RoleService>();
             services.AddDistributedMemoryCache();
             services.AddSession(options =>
             {
