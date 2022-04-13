@@ -34,7 +34,8 @@ namespace Hotel_Core_System.Controllers
 
         public IActionResult getAllRooms()
         {
-            return View("~/Views/Admin/Room/Index.cshtml");
+            var rooms = _roomService.GetRoomList();
+            return View("~/Views/Admin/Room/Index.cshtml", rooms);
         }
 
         
