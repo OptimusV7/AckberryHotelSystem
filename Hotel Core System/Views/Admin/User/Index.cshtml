@@ -1,9 +1,8 @@
-﻿
-@{
+﻿@{
     ViewData["Title"] = "Admin All Rooms";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
- @model IEnumerable<ApplicationUser>
+@model IEnumerable<ApplicationUser>
 
 
 <nav class="page-breadcrumb">
@@ -14,12 +13,12 @@
 </nav>
 
 <div class="d-flex justify-content-right align-items-center flex-wrap grid-margin">
-    
+
     <div class="d-flex align-items-center flex-wrap text-nowrap">
-        <a asp-controller="User" asp-action="AddUser" 
-            type="button" class="btn btn-primary btn-icon-text mb-2 mb-md-0">
-           <i class="btn-icon-prepend" data-feather="user"></i>
-                Add User
+        <a asp-controller="User" asp-action="AddUser"
+           type="button" class="btn btn-primary btn-icon-text mb-2 mb-md-0">
+            <i class="btn-icon-prepend" data-feather="user"></i>
+            Add User
         </a>
     </div>
 </div>
@@ -42,16 +41,25 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach( var user in Model)
+                            @if (Model.Count() <= 0)
                             {
                                 <tr>
-                                <td>@user.Name</td>                                
-                                <td>@user.Email</td>
-                                <td>@user.EmailConfirmed</td>
-                                <td>@user.PhoneNumber</td>
-                                <td>@user.PhoneNumberConfirmed</td>
+                                    <td class="text-center" colspan="5"> No Room data</td>
                                 </tr>
-                            }  
+                            }
+                            else
+                            {
+                                @foreach (var user in Model)
+                                {
+                                    <tr>
+                                        <td>@user.Name</td>
+                                        <td>@user.Email</td>
+                                        <td>@user.EmailConfirmed</td>
+                                        <td>@user.PhoneNumber</td>
+                                        <td>@user.PhoneNumberConfirmed</td>
+                                    </tr>
+                                }
+                            }
                         </tbody>
                     </table>
                 </div>
