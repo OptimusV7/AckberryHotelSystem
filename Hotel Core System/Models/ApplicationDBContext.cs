@@ -19,7 +19,8 @@ namespace Hotel_Core_System.Models
         public DbSet<Booking> Bookings { get; set; }
         public DbSet<MpesaCallback> MpesaCallbacks { get; set; }
         public DbSet <MessageStatus> MessageStatuses { get; set; }
-        public DbSet <Message> Messages { get; set; }
+        public DbSet<Message> Messages { get; set; }
+        public DbSet<RoomImage> RoomImages { get; set; }
 
 
     }

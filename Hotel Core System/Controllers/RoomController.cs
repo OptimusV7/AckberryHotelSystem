@@ -2,6 +2,7 @@
 using Hotel_Core_System.Models.ViewModels;
 using Hotel_Core_System.Services.Rooms;
 using Hotel_Core_System.Utility;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -40,14 +41,14 @@ namespace Hotel_Core_System.Controllers
 
         
         [HttpPost]
-        public IActionResult Post(Room data)
+        public IActionResult Post(RoomVM data, IFormFile[] ImageFile)
         {
             if (ModelState.IsValid)
             {
                 CommonResponse<int> commonRespose = new CommonResponse<int>();
                 try
                 {
-                    commonRespose.status = _roomService.AddRoom(data).Result;
+                    commonRespose.status = _roomService.AddRoom(data, ImageFile).Result;
                     if (commonRespose.status == 200)
                     {
                        return RedirectToAction("getAllRooms", "Room");

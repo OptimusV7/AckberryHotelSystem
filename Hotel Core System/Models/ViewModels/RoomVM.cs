@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Http;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace Hotel_Core_System.Models.ViewModels
@@ -15,7 +16,7 @@ namespace Hotel_Core_System.Models.ViewModels
         public bool IsSmokingAllowed { get; set; }
         [Required, Display(Name = "Is Room Available")]
         public bool IsRoomAvailable { get; set; }
-        
-        public IFormFile ImageFile { get; set; }
+        public string imageName { get; set; }
+        public List<string> ImageFile { get; set; }
     }
 }

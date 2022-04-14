@@ -6,7 +6,7 @@ namespace Hotel_Core_System.Models
     {
         [Key]
         public int ImageID { get; set; }
-        public int RoomNumber { get; set; }
+        public string RoomNumber { get; set; }
         public string ImageName { get; set; }
         public string Caption { get; set; }
     }
