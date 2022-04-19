@@ -28,6 +28,8 @@
                                 <th>Booking Price</th>
                                 <th>IsSmokingAllowed</th>
                                 <th>IsRoomAvailable</th>
+                                <th>Max Adult</th>
+                                <th>Max Child</th>
                                 <th>CheckIn</th>
                                 <th>CheckOut</th>
                             </tr>
@@ -46,10 +48,12 @@
                                     <tr>
                                         <td>@item.RoomId</td>
                                         <td>@item.RoomNumber</td>
-                                        <td>@item.RoomType</td>
-                                        <td>@item.BookingPrice</td>
+                                        <td>@item.RoomTypeString</td>
+                                        <td>@Convert.ToDecimal(@item.BookingPrice).ToString("#,##0.00")</td>
                                         <td>@item.IsSmokingAllowed</td>
                                         <td>@item.IsRoomAvailable</td>
+                                        <td>@item.MaxAdult</td>
+                                        <td>@item.MaxChild</td>
                                         <td>@item.CheckIn</td>
                                         <td>@item.CheckOut</td>
                                     </tr>

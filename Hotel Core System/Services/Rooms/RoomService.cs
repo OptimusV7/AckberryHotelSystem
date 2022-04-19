@@ -37,6 +37,8 @@ namespace Hotel_Core_System.Services.Rooms
                 CheckOut = false,
                 BookingPrice = model.BookingPrice,
                 IsSmokingAllowed = model.IsSmokingAllowed,
+                MaxAdult = model.MaxChild,
+                MaxChild = model.MaxChild
             };
             model.ImageFile = new List<string>();
 
@@ -88,17 +90,22 @@ namespace Hotel_Core_System.Services.Rooms
 
         public List<Room> GetRoomList()
         {
+            
             var roomlist = (from room in _dbContext.Rooms
+                            join t in _dbContext.RoomTypes
+                            on room.RoomType equals t.Id
                             select new Room
                             {
                                 RoomId = room.RoomId,
                                 RoomNumber = room.RoomNumber,
-                                RoomType = room.RoomType,
+                                RoomTypeString = t.Type_name,
                                 IsRoomAvailable = room.IsRoomAvailable,
                                 CheckIn = room.CheckIn,
                                 CheckOut = room.CheckOut,
-                                BookingPrice = room.BookingPrice,
-                                IsSmokingAllowed = room.IsSmokingAllowed
+                                BookingPrice = room.BookingPrice,                                
+                                IsSmokingAllowed = room.IsSmokingAllowed,
+                                MaxAdult = room.MaxChild,
+                                MaxChild = room.MaxChild
                             }).ToList();
             return roomlist;
         }
