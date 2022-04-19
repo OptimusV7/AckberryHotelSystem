@@ -39,8 +39,9 @@ namespace Hotel_Core_System.Controllers
             return View("~/Views/Admin/Room/Index.cshtml", rooms);
         }
 
-        
+
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public IActionResult Post(RoomVM data, IFormFile[] ImageFile)
         {
             if (ModelState.IsValid)
@@ -64,7 +65,7 @@ namespace Hotel_Core_System.Controllers
             }
             ModelState.AddModelError("", "Check your form data");
 
-            return RedirectToAction("createRoom", "Room");
+            return View("~/Views/Admin/Room/Create.cshtml", data);
 
         }
 
