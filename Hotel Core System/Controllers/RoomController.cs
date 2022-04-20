@@ -19,7 +19,8 @@ namespace Hotel_Core_System.Controllers
         }
         public IActionResult Index()
         {
-            return View();
+            var rooms = _roomService.GetRoomList();
+            return View(rooms);
         }
 
         public IActionResult RoomDetails()

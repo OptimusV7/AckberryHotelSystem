@@ -1,6 +1,7 @@
 ﻿@{
     ViewData["Title"] = "Room";
 }
+@model IEnumerable<Room>
 <div class="inn-banner">
     <div class="container">
         <div class="row">
@@ -32,50 +33,55 @@
                 <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet.</p>
             </div>
             <!--ROOM SECTION-->
-            <div class="room">
-                <div class="ribbon ribbon-top-left">
-                    <span>Featured</span>
-                </div>
-                <!--ROOM IMAGE-->
+            @foreach (var item in Model)
+            {
+                <div class="room">
+                    <div class="ribbon ribbon-top-left">
+                        <span>Featured</span>
+                    </div>
+                    <!--ROOM IMAGE-->
                 <div class="r1 r-com">
-                    <img src="theme/images/room/1.jpg" alt="" />
-                </div>
-                <!--ROOM RATING-->
+                        <img src="theme/images/room/1.jpg" alt="" />
+                    </div>
+                    <!--ROOM RATING-->
                 <div class="r2 r-com">
-                    <h4>Master Suite</h4>
-                    <div class="r2-ratt"> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <img src="theme/images/h-trip.png" alt="" /> <span>Excellent  4.5 / 5</span> </div>
-                    <ul>
-                        <li>Max Adult : 3</li>
-                        <li>Max Child : 1</li>
-                        <li></li>
-                        <li></li>
-                    </ul>
-                </div>
-                <!--ROOM AMINITIES-->
+                        <h4>@item.RoomTypeString</h4>
+                        <div class="r2-ratt"> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <img src="theme/images/h-trip.png" alt="" /> <span>Excellent  4.5 / 5</span> </div>
+                        <ul>
+                            <li>Max Adult : @item.MaxAdult</li>
+                            <li>Max Child : @item.MaxChild</li>
+                            <li></li>
+                            <li></li>
+                        </ul>
+                    </div>
+                    <!--ROOM AMINITIES-->
                 <div class="r3 r-com">
-                    <ul>
-                        <li>Ironing facilities</li>
-                        <li>Tea/Coffee maker</li>
-                        <li>Air conditioning</li>
-                        <li>Flat-screen TV</li>
-                        <li>Wake-up service</li>
-                    </ul>
-                </div>
-                <!--ROOM PRICE-->
+                        <ul>
+                            <li>Ironing facilities</li>
+                            <li>Tea/Coffee maker</li>
+                            <li>Air conditioning</li>
+                            <li>Flat-screen TV</li>
+                            <li>Wake-up service</li>
+                        </ul>
+                    </div>
+                    <!--ROOM PRICE-->
                 <div class="r4 r-com">
-                    <p>Price for 1 night</p>
-                    <p>
-                        <span class="room-price-1">5000</span> <span class="room-price">$: 7000</span>
-                    </p>
-                    <p>Non Refundable</p>
-                </div>
-                <!--ROOM BOOKING BUTTON-->
+                        <p>Price for 1 night</p>
+                        <p>
+                            <span class="room-price-1">@Convert.ToDecimal(@item.BookingPrice).ToString("#,##0.00")</span> <span>ksh</span>
+                        </p>
+                        <p>Non Refundable</p>
+                    </div>
+                    <!--ROOM BOOKING BUTTON-->
                 <div class="r5 r-com">
-                    <div class="r2-available">Available</div>
-                    <p>Price for 1 night</p> <a asp-controller="Room" asp-action="RoomDetails" class="inn-room-book">Book</a>
+                        <div class="r2-available">Available</div>
+                        <p>Price for 1 night</p> <a asp-controller="Room" asp-action="RoomDetails" class="inn-room-book">Book</a>
+                    </div>
                 </div>
-            </div>
+            }
+
             <!--END ROOM SECTION-->
+
         </div>
     </div>
 </div>
