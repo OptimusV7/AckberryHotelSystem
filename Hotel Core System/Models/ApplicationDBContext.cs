@@ -21,6 +21,7 @@ namespace Hotel_Core_System.Models
         public DbSet <MessageStatus> MessageStatuses { get; set; }
         public DbSet<Message> Messages { get; set; }
         public DbSet<RoomImage> RoomImages { get; set; }
+        public DbSet<RoomFeature> RoomFeatures { get; set; }
 
 
     }

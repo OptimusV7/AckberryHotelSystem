@@ -3,6 +3,8 @@ using Hotel_Core_System.Models.ViewModels;
 using Hotel_Core_System.Services.LogManagerConf;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -26,8 +28,11 @@ namespace Hotel_Core_System.Services.Rooms
         }
 
 
-        public async Task<int> AddRoom(RoomVM model, IFormFile[] images)
-        {           
+        public async Task<int> AddRoom(RoomVM model, IFormFile[] images,List<string> RoomFeaturesValues)
+        {
+            object[] a = RoomFeaturesValues.ToArray<object>();
+            string json = JsonConvert.SerializeObject(a);
+            //var jsonCleanData = JObject.Parse(json);
             var room = new Room
             {
                 RoomNumber = model.RoomNumber,
@@ -38,7 +43,9 @@ namespace Hotel_Core_System.Services.Rooms
                 BookingPrice = model.BookingPrice,
                 IsSmokingAllowed = model.IsSmokingAllowed,
                 MaxAdult = model.MaxChild,
-                MaxChild = model.MaxChild
+                MaxChild = model.MaxChild,
+                RoomFeatureValues = json,
+                RoomDescription = model.RoomDescription,
             };
             model.ImageFile = new List<string>();
 
@@ -159,6 +166,18 @@ namespace Hotel_Core_System.Services.Rooms
             }
             logger.LogInformation(results.ToString());
             return 200;
+        }
+
+        public List<RoomFeature> GetRoomFeaturesList()
+        {
+            var roomFeatureList = (from RoomFeature in _dbContext.RoomFeatures
+                                select new RoomFeature
+                                {
+                                    Id = RoomFeature.Id,
+                                    Feature_Name = RoomFeature.Feature_Name
+
+                                }).ToList();
+            return roomFeatureList;
         }
     }
 }

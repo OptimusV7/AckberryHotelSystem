@@ -10,10 +10,11 @@ namespace Hotel_Core_System.Services.Rooms
     {
         public List<Room> GetRoomList();
         public List<RoomType> GetRoomTypeList();
+        public List<RoomFeature> GetRoomFeaturesList();
         public Task<int> UpdateRoom(Room model);
         public Task<int> DeleteRoom(int roomId);
         public Room GetRoom(int roomId);
-        public Task<int> AddRoom(RoomVM model, IFormFile[] images);
+        public Task<int> AddRoom(RoomVM model, IFormFile[] images, List<string> RoomFeaturesValues);
         public Task<int> AddImage(string imageName, string roomNum, string caption);
     }
 }

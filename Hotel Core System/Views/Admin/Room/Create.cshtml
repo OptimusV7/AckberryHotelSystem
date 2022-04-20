@@ -26,6 +26,11 @@
                         <span asp-validation-for="RoomNumber" class="text-danger"></span>
                     </div>
                     <div class="form-group">
+                        @Html.LabelFor(model => model.RoomDescription)
+                        <textarea asp-for="RoomDescription" class="form-control" placeholder="Enter Description"></textarea>
+                        <span asp-validation-for="RoomDescription" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
                         @Html.LabelFor(model => model.MaxAdult)
                         <input type="number" asp-for="MaxAdult" class="form-control" placeholder="Enter Number">
                         <span asp-validation-for="MaxAdult" class="text-danger"></span>
@@ -40,6 +45,12 @@
                         @Html.LabelFor(model => model.RoomType)
                         <select asp-for="RoomType" asp-items="@(new SelectList(ViewBag.RoomTypeList, "Id", "Type_name"))" class="form-control"></select>
                          <span asp-validation-for="RoomType" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group">                       
+                        @Html.LabelFor(model => model.RoomFeaturesValues)
+                        <select asp-for="RoomFeaturesValues" asp-items="@(new SelectList(ViewBag.RoomFeaturesList, "Id", "Feature_Name"))" multiple class="form-control"></select>
+                         <span asp-validation-for="RoomFeaturesValues" class="text-danger"></span>
                     </div>
 
                     <div class="form-group">

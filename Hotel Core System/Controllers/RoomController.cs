@@ -31,6 +31,7 @@ namespace Hotel_Core_System.Controllers
         public IActionResult createRoom()
         {
             ViewBag.RoomTypeList = _roomService.GetRoomTypeList();
+            ViewBag.RoomFeaturesList = _roomService.GetRoomFeaturesList();
             return View("~/Views/Admin/Room/Create.cshtml");
         }
 
@@ -43,14 +44,14 @@ namespace Hotel_Core_System.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Post(RoomVM data, IFormFile[] ImageFile)
+        public IActionResult Post(RoomVM data, IFormFile[] ImageFile, List<string> RoomFeaturesValues)
         {
             if (ModelState.IsValid)
             {
                 CommonResponse<int> commonRespose = new CommonResponse<int>();
                 try
                 {
-                    commonRespose.status = _roomService.AddRoom(data, ImageFile).Result;
+                    commonRespose.status = _roomService.AddRoom(data, ImageFile, RoomFeaturesValues).Result;
                     if (commonRespose.status == 200)
                     {
                        return RedirectToAction("getAllRooms", "Room");

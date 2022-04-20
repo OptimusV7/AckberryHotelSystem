@@ -22,6 +22,8 @@ namespace Hotel_Core_System.Models
         public bool CheckOut { get; set; }
         public int MaxAdult { get; set; }
         public int MaxChild { get; set; }
+        public string RoomDescription { get; set; }
+        public string RoomFeatureValues { get; set; }
 
         //public List<Booking> bookings { get; set; }
 

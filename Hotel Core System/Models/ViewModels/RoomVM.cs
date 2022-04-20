@@ -20,7 +20,11 @@ namespace Hotel_Core_System.Models.ViewModels
         public int MaxAdult { get; set; }
         [Required, Display(Name = "Max No Child")]
         public int MaxChild { get; set; }
+        [Required, Display(Name = "Room Description")]
+        public string RoomDescription { get; set; }
         public string imageName { get; set; }
         public List<string> ImageFile { get; set; }
+        [Required, Display(Name = "Room Features")]
+        public List<string> RoomFeaturesValues { get; set; }
     }
 }
