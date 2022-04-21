@@ -23,19 +23,28 @@ namespace Hotel_Core_System.Controllers
             return View(rooms);
         }
 
-        public IActionResult RoomDetails()
+        public IActionResult GetRoomDetails()
         {
             return View();
         }
 
-        public IActionResult createRoom()
+        public IActionResult AddRoom()
         {
             ViewBag.RoomTypeList = _roomService.GetRoomTypeList();
             ViewBag.RoomFeaturesList = _roomService.GetRoomFeaturesList();
             return View("~/Views/Admin/Room/Create.cshtml");
         }
 
-        public IActionResult getAllRooms()
+        public IActionResult AddFeature()
+        {
+            return View("~/Views/Admin/RoomFeatures/Create.cshtml");
+        }
+        public IActionResult GetAllFeatures()
+        {            
+            return View("~/Views/Admin/RoomFeatures/Index.cshtml");
+        }
+
+        public IActionResult GetAllRooms()
         {
             var rooms = _roomService.GetRoomList();
             return View("~/Views/Admin/Room/Index.cshtml", rooms);
@@ -44,7 +53,7 @@ namespace Hotel_Core_System.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Post(RoomVM data, IFormFile[] ImageFile, List<string> RoomFeaturesValues)
+        public IActionResult PostRoom(RoomVM data, IFormFile[] ImageFile, List<string> RoomFeaturesValues)
         {
             if (ModelState.IsValid)
             {
@@ -54,7 +63,8 @@ namespace Hotel_Core_System.Controllers
                     commonRespose.status = _roomService.AddRoom(data, ImageFile, RoomFeaturesValues).Result;
                     if (commonRespose.status == 200)
                     {
-                       return RedirectToAction("getAllRooms", "Room");
+                        ViewBag.Success = "Submitted Successfully";
+                        return RedirectToAction("getAllRooms", "Room");
                     }
                 }
                 catch (Exception e)
@@ -71,9 +81,39 @@ namespace Hotel_Core_System.Controllers
 
         }
 
-        
         [HttpPost]
-        public IActionResult Update(Room data)
+        [ValidateAntiForgeryToken]
+        public IActionResult PostFeature(RoomFeature roomFeature)
+        {
+            if (ModelState.IsValid)
+            {
+                CommonResponse<int> commonRespose = new CommonResponse<int>();
+                try
+                {
+                    commonRespose.status = _roomService.AddFeature(roomFeature).Result;
+                    if (commonRespose.status == 200)
+                    {
+                        ViewBag.Success = "Submitted Successfully";
+                        return RedirectToAction("getAllFeatures", "Room");
+                    }
+                }
+                catch (Exception e)
+                {
+                    ModelState.AddModelError("", e.Message);
+
+                }
+
+                return RedirectToAction("Index", "Home");
+            }
+            ModelState.AddModelError("", "Check your form data");
+
+            return View("~/Views/Admin/RoomFeature/Create.cshtml", roomFeature);
+            
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult UpdateRoom(Room data)
         {
             CommonResponse<int> commonResponse = new CommonResponse<int>();
             try
@@ -96,7 +136,7 @@ namespace Hotel_Core_System.Controllers
 
         
         [HttpDelete]
-        public IActionResult Delete(int roomId)
+        public IActionResult DeleteRoom(int roomId)
         {
             CommonResponse<int> commonResponse = new CommonResponse<int>();
             try

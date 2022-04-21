@@ -50,7 +50,7 @@
                         </a>
                     </li>
                     
-                    <li class="nav-item nav-category">Components</li>
+                    <li class="nav-item nav-category">System Modules</li>
                     <li class="nav-item">
                         <a class="nav-link" data-toggle="collapse" href="#uiComponents" role="button" aria-expanded="false" aria-controls="uiComponents">
                             <i class="link-icon" data-feather="feather"></i>
@@ -60,30 +60,28 @@
                         <div class="collapse" id="uiComponents">
                             <ul class="nav sub-menu">
                                 <li class="nav-item">
-                                    <a asp-controller="Room" asp-action="getAllRooms" class="nav-link">All Rooms</a>
+                                    <a asp-controller="Room" asp-action="GetAllRooms" class="nav-link">View Rooms</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a asp-controller="Room" asp-action="createRoom" class="nav-link">Add Rooms</a>
+                                    <a asp-controller="Room" asp-action="AddRoom" class="nav-link">Add Rooms</a>
                                 </li>
+                                
                             </ul>
                         </div>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" data-toggle="collapse" href="#advancedUI" role="button" aria-expanded="false" aria-controls="advancedUI">
                             <i class="link-icon" data-feather="anchor"></i>
-                            <span class="link-title">Advanced UI</span>
+                            <span class="link-title">Room Features</span>
                             <i class="link-arrow" data-feather="chevron-down"></i>
                         </a>
                         <div class="collapse" id="advancedUI">
                             <ul class="nav sub-menu">
                                 <li class="nav-item">
-                                    <a href="pages/advanced-ui/cropper.html" class="nav-link">Cropper</a>
+                                    <a asp-controller="Room" asp-action="GetAllFeatures" class="nav-link">View Room Features</a>
                                 </li>
-                                <li class="nav-item">
-                                    <a href="pages/advanced-ui/owl-carousel.html" class="nav-link">Owl carousel</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="pages/advanced-ui/sweet-alert.html" class="nav-link">Sweet Alert</a>
+                               <li class="nav-item">
+                                    <a asp-controller="Room" asp-action="AddFeature" class="nav-link">Add Room Features</a>
                                 </li>
                             </ul>
                         </div>

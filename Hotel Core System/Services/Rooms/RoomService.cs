@@ -179,5 +179,20 @@ namespace Hotel_Core_System.Services.Rooms
                                 }).ToList();
             return roomFeatureList;
         }
+
+        public async Task<int> AddFeature(RoomFeature roomFeature)
+        {
+            var roomFeatures = new RoomFeature
+            {
+                Feature_Name = roomFeature.Feature_Name,
+            };
+            _dbContext.RoomFeatures.Add(roomFeature);
+            var result = await _dbContext.SaveChangesAsync();
+            if (result <= 0)
+            {
+                logger.LogInformation(result.ToString());
+            }
+            return 200;
+        }
     }
 }

@@ -16,5 +16,6 @@ namespace Hotel_Core_System.Services.Rooms
         public Room GetRoom(int roomId);
         public Task<int> AddRoom(RoomVM model, IFormFile[] images, List<string> RoomFeaturesValues);
         public Task<int> AddImage(string imageName, string roomNum, string caption);
+        public Task<int> AddFeature(RoomFeature roomFeature);
     }
 }

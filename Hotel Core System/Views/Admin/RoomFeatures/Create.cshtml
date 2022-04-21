@@ -1,0 +1,44 @@
+﻿@model Hotel_Core_System.Models.RoomFeature
+@{
+    ViewData["Title"] = "Admin Room Features ";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+@{  
+   var success = ViewBag.Success;   
+} 
+<nav class="page-breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="#">Rooms</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Room Features</li>
+    </ol>
+</nav>
+
+
+
+<div class="row">
+    <div class="col-md-12 grid-margin stretch-card">
+        <div class="card">
+            <div class="card-body">
+                <h6 class="card-title">Create Room Features</h6>
+                <form  method="post" enctype="multipart/form-data" asp-controller="Room" asp-action="PostFeature">
+                    @if(success != null)
+                    {
+                        <div class="text-success">@success</div>
+                    }
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Feature_Name)
+                        <input type="text" asp-for="Feature_Name" class="form-control" placeholder="Enter Name">
+                        <span asp-validation-for="Feature_Name" class="text-danger"></span>
+                    </div>
+                   
+                    <button class="btn btn-primary" type="submit">Submit form</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+

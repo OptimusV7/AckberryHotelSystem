@@ -3,6 +3,9 @@
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 @model Hotel_Core_System.Models.ViewModels.RoomVM
+@{  
+   var success = ViewBag.Success;   
+} 
 
 <nav class="page-breadcrumb">
     <ol class="breadcrumb">
@@ -18,7 +21,11 @@
         <div class="card">
             <div class="card-body">
                 <h6 class="card-title">Create Rooms</h6>
-                <form  method="post" enctype="multipart/form-data" asp-controller="Room" asp-action="Post">
+                <form  method="post" enctype="multipart/form-data" asp-controller="Room" asp-action="PostRoom">
+                    @if(success != null)
+                    {
+                        <div class="text-success">@success</div>
+                    }
                     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                     <div class="form-group">
                         @Html.LabelFor(model => model.RoomNumber)
