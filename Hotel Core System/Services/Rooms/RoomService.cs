@@ -42,7 +42,7 @@ namespace Hotel_Core_System.Services.Rooms
                 CheckOut = false,
                 BookingPrice = model.BookingPrice,
                 IsSmokingAllowed = model.IsSmokingAllowed,
-                MaxAdult = model.MaxChild,
+                MaxAdult = model.MaxAdult,
                 MaxChild = model.MaxChild,
                 RoomFeatureValues = json,
                 RoomDescription = model.RoomDescription,
