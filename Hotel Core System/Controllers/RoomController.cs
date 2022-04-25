@@ -40,8 +40,9 @@ namespace Hotel_Core_System.Controllers
             return View("~/Views/Admin/RoomFeatures/Create.cshtml");
         }
         public IActionResult GetAllFeatures()
-        {            
-            return View("~/Views/Admin/RoomFeatures/Index.cshtml");
+        {
+            var roomFeaturesList = _roomService.GetRoomFeaturesList();
+            return View("~/Views/Admin/RoomFeatures/Index.cshtml", roomFeaturesList);
         }
 
         public IActionResult GetAllRooms()
