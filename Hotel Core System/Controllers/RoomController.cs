@@ -122,6 +122,7 @@ namespace Hotel_Core_System.Controllers
                 if (commonResponse.status > 0)
                 {
                     commonResponse.message = Helper.roomUpdated;
+                    ViewBag.Success = commonResponse;
                     return RedirectToAction("getAllRooms", "Room");
                 }
             }
