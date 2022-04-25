@@ -1,3 +1,5 @@
+[![.NET Actions Status](https://github.com/OptimusV7/AckberryHotelSystem/workflows/dotnet/badge.svg)](https://github.com/OptimusV7/AckberryHotelSystem/actions)
+
 | Language | Framework | Platform | Author |
 | -------- | -------- |--------|--------|
 | ASP.NET Core | .NET Core 5.0 | Azure Web App | Gilbert Mule
