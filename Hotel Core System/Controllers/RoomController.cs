@@ -94,7 +94,7 @@ namespace Hotel_Core_System.Controllers
                     if (commonRespose.status == 200)
                     {
                         ViewBag.Success = "Submitted Successfully";
-                        return RedirectToAction("GetAllFeatures", "Room");
+                        return RedirectToAction("AddFeature", "Room");
                     }
                 }
                 catch (Exception e)

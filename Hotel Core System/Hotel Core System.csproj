@@ -4,6 +4,7 @@
     <TargetFramework>net5.0</TargetFramework>
     <RootNamespace>Hotel_Core_System</RootNamespace>
     <CopyRefAssembliesToPublishDirectory>false</CopyRefAssembliesToPublishDirectory>
+    <UserSecretsId>0f894403-5b6e-47f0-a0ae-40a5a0c17335</UserSecretsId>
   </PropertyGroup>
 
   <ItemGroup>
