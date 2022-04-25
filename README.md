@@ -1,4 +1,4 @@
-[![.NET Actions Status](https://github.com/OptimusV7/AckberryHotelSystem/workflows/dotnet/badge.svg)](https://github.com/OptimusV7/AckberryHotelSystem/actions)
+[![.NET Actions Status](https://github.com/OptimusV7/AckberryHotelSystem/workflows/.NET/badge.svg)](https://github.com/OptimusV7/AckberryHotelSystem/actions)
 
 | Language | Framework | Platform | Author |
 | -------- | -------- |--------|--------|
