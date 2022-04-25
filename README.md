@@ -1,6 +1,6 @@
 | Language | Framework | Platform | Author |
 | -------- | -------- |--------|--------|
-| ASP.NET Core | .NET Core 5.0 | Azure Web App |
+| ASP.NET Core | .NET Core 5.0 | Azure Web App | Gilbert Mule
 
 
 # ASP.NET Core MVC Hotel Booking and Management System 
