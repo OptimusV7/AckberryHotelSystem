@@ -38,6 +38,7 @@
                                 <th>Confirmed Email</th>
                                 <th>Phone</th>
                                 <th>Confirmed Phone</th>
+                                <th>Action</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -57,6 +58,17 @@
                                         <td>@user.EmailConfirmed</td>
                                         <td>@user.PhoneNumber</td>
                                         <td>@user.PhoneNumberConfirmed</td>
+                                        <td>
+                                            <button type="button" class="btn btn-primary btn-icon">
+                                                <i data-feather="eye"></i>
+                                            </button>
+                                            <button type="button" class="btn btn-primary btn-icon">
+                                                <i data-feather="edit"></i>
+                                            </button>
+                                            <button type="button" class="btn btn-danger btn-icon">
+                                                <i data-feather="trash"></i>
+                                            </button>
+                                        </td>
                                     </tr>
                                 }
                             }

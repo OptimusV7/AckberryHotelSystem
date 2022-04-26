@@ -45,7 +45,7 @@ namespace Hotel_Core_System.Services.Users
                              Email = user.Email
                              
                          }
-                           ).ToList();
+                           ).OrderByDescending(user => user.Id).ToList();
             return users;
         }
 
