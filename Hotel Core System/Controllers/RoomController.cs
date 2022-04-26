@@ -26,6 +26,7 @@ namespace Hotel_Core_System.Controllers
                 {
                     object roomFeaturesJson = item.RoomFeatureValues;
                     var FeatureValue = _roomService.GetRoomFeaturesList(roomFeaturesJson);
+                    
                 }
             }
             return View(rooms);

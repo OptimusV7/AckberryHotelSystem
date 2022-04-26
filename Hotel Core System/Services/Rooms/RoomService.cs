@@ -196,7 +196,20 @@ namespace Hotel_Core_System.Services.Rooms
 
         public List<RoomFeature> GetRoomFeaturesList(object features)
         {
-            throw new NotImplementedException();
+            List<RoomFeature> roomFeatureList = new List<RoomFeature>();
+            foreach (var item in features.ToString())
+            {
+                roomFeatureList = (from RoomFeature in _dbContext.RoomFeatures
+                                       where RoomFeature.Id.Equals(item)
+                                   select new RoomFeature
+                                   {
+                                       Id = RoomFeature.Id,
+                                       Feature_Name = RoomFeature.Feature_Name
+
+                                   }).ToList();
+            }
+           
+            return roomFeatureList;
         }
     }
 }
