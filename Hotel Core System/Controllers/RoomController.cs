@@ -20,6 +20,14 @@ namespace Hotel_Core_System.Controllers
         public IActionResult Index()
         {
             var rooms = _roomService.GetRoomList();
+            if (rooms.Count > 0 )
+            {
+                foreach (var item in rooms)
+                {
+                    object roomFeaturesJson = item.RoomFeatureValues;
+                    var FeatureValue = _roomService.GetRoomFeaturesList(roomFeaturesJson);
+                }
+            }
             return View(rooms);
         }
 

@@ -77,8 +77,6 @@ namespace Hotel_Core_System.Services.Rooms
             return 200;
         }
 
-        
-
         public async Task<int> DeleteRoom(int roomId)
         {
             var roomdata = _dbContext.Rooms.FirstOrDefault(x => x.RoomId == roomId);
@@ -111,6 +109,7 @@ namespace Hotel_Core_System.Services.Rooms
                                 CheckOut = room.CheckOut,
                                 BookingPrice = room.BookingPrice,                                
                                 IsSmokingAllowed = room.IsSmokingAllowed,
+                                RoomFeatureValues = room.RoomFeatureValues,
                                 MaxAdult = room.MaxChild,
                                 MaxChild = room.MaxChild
                             }).ToList();
@@ -193,6 +192,11 @@ namespace Hotel_Core_System.Services.Rooms
                 logger.LogInformation(result.ToString());
             }
             return 200;
+        }
+
+        public List<RoomFeature> GetRoomFeaturesList(object features)
+        {
+            throw new NotImplementedException();
         }
     }
 }
