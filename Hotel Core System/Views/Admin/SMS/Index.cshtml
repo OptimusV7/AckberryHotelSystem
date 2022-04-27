@@ -3,14 +3,49 @@
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 
-
-
 <nav class="page-breadcrumb">
     <ol class="breadcrumb">
         <li class="breadcrumb-item"><a href="#">SMS</a></li>
         <li class="breadcrumb-item active" aria-current="page">Setup SMS Configuration</li>
     </ol>
 </nav>
+
+<div class="row">
+    <div class="col-md-12 grid-margin stretch-card">
+        <div class="card">
+            <div class="card-body">
+                <h6 class="card-title">Current Email Configurations</h6>
+                <p class="card-description">View all Email configurations</p>
+                <div class="table-responsive">
+                    <table id="dataTableExample" class="table">
+                        <thead>
+                            <tr>
+                                <th>Item ID</th>
+                                <th>SMS Service</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1</td>
+                                <td>Sendgrid</td>
+                                <td>
+                                    <button type="button" class="btn btn-primary btn-icon">
+                                        <i data-feather="edit"></i>
+                                    </button>
+                                    <button type="button" class="btn btn-danger btn-icon">
+                                        <i data-feather="trash"></i>
+                                    </button>
+                                </td>
+                            </tr>
+                            
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
 
 
