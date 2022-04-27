@@ -32,6 +32,7 @@
                                 <th>Max Child</th>
                                 <th>CheckIn</th>
                                 <th>CheckOut</th>
+                                <th>Action</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -56,6 +57,17 @@
                                         <td>@item.MaxChild</td>
                                         <td>@item.CheckIn</td>
                                         <td>@item.CheckOut</td>
+                                        <td>
+                                            <button type="button" class="btn btn-primary btn-icon">
+                                                <i data-feather="eye"></i>
+                                            </button>
+                                            <button type="button" class="btn btn-primary btn-icon">
+                                                <i data-feather="edit"></i>
+                                            </button>
+                                            <button type="button" class="btn btn-danger btn-icon">
+                                                <i data-feather="trash"></i>
+                                            </button>
+                                        </td>
                                     </tr>
                                 }
                             }
