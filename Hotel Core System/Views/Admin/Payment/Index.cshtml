@@ -3,11 +3,69 @@
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 
-
-
 <nav class="page-breadcrumb">
     <ol class="breadcrumb">
         <li class="breadcrumb-item"><a href="#">Payment</a></li>
         <li class="breadcrumb-item active" aria-current="page">Setup Payment Configuration</li>
     </ol>
 </nav>
+
+<div class="row">
+    <div class="col-md-12 grid-margin stretch-card">
+        <div class="card">
+            <div class="card-body">
+                <h6 class="card-title">Current Payment Methods</h6>
+                <p class="card-description">View all room features in the system</p>
+                <div class="table-responsive">
+                    <table id="dataTableExample" class="table">
+                        <thead>
+                            <tr>
+                                <th>Item ID</th>
+                                <th>Payment Name</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1</td>
+                                <td>Mpesa Mobile Money Payment</td>
+                                <td>
+                                    <button type="button" class="btn btn-primary btn-icon">
+                                        <i data-feather="edit"></i>
+                                    </button>
+                                    <button type="button" class="btn btn-danger btn-icon">
+                                        <i data-feather="trash"></i>
+                                    </button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>2</td>
+                                <td>Paypal Payyment</td>
+                                <td>
+                                    <button type="button" class="btn btn-primary btn-icon">
+                                        <i data-feather="edit"></i>
+                                    </button>
+                                    <button type="button" class="btn btn-danger btn-icon">
+                                        <i data-feather="trash"></i>
+                                    </button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>3</td>
+                                <td>Bank Payment</td>
+                                <td>
+                                    <button type="button" class="btn btn-primary btn-icon">
+                                        <i data-feather="edit"></i>
+                                    </button>
+                                    <button type="button" class="btn btn-danger btn-icon">
+                                        <i data-feather="trash"></i>
+                                    </button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
