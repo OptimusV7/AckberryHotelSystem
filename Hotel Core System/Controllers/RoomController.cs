@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
+using System.Net;
 
 namespace Hotel_Core_System.Controllers
 {
@@ -119,6 +120,18 @@ namespace Hotel_Core_System.Controllers
 
             return View("~/Views/Admin/RoomFeature/Create.cshtml", roomFeature);
             
+        }
+
+        public IActionResult EditRoom(int id)
+        {
+            if (id >= 0)
+            {
+                ViewBag.RoomDetailError = "Select an entry";
+                return View("~/Views/Admin/Room/Edit.cshtml");
+            }
+            var roomDetailEdit = _roomService.GetRoom(id);
+            
+            return View("~/Views/Admin/Room/Edit.cshtml", roomDetailEdit);
         }
 
         [HttpPost]
