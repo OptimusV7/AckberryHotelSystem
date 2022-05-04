@@ -58,11 +58,12 @@
                         <li>
                             <a asp-controller="Home" asp-action="ContactUs">Contact Us</a>
                         </li>
-                        @if (HttpContextAccessor.HttpContext.User.IsInRole("Admin"))
+                        @if (HttpContextAccessor.HttpContext.User.IsInRole("Admin") || HttpContextAccessor.HttpContext.User.IsInRole("Receptionist") ||
+								HttpContextAccessor.HttpContext.User.IsInRole("Supervisor") || HttpContextAccessor.HttpContext.User.IsInRole("Manager"))
                         {
                             <li><a asp-controller="Admin" asp-action="Index">Admin Portal</a></li>
                         }
-						else{
+						@if(HttpContextAccessor.HttpContext.User.IsInRole("Guest")){
 							<li><a asp-controller="Admin" asp-action="Index">User Portal</a></li>
 						}
                         @if (!signInManager.IsSignedIn(User))
