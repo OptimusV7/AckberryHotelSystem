@@ -60,7 +60,7 @@ namespace Hotel_Core_System.Controllers
             var rooms = _roomService.GetRoomList();
             return View("~/Views/Admin/Room/Index.cshtml", rooms);
         }
-
+        
 
         [HttpPost]
         [ValidateAntiForgeryToken]
