@@ -61,10 +61,10 @@
                                             <button type="button" class="btn btn-primary btn-icon">
                                                 <i data-feather="eye"></i>
                                             </button>
-                                            <button type="button" class="btn btn-primary btn-icon">
+                                            <button asp-controller="Room" asp-action="EditRoom" asp-route-id="@item.RoomId" type="button" class="btn btn-primary btn-icon">
                                                 <i data-feather="edit"></i>
                                             </button>
-                                            <button type="button" class="btn btn-danger btn-icon">
+                                            <button asp-controller="Room" asp-action="DeleteRoom" asp-route-id="@item.RoomId" type="button" class="btn btn-danger btn-icon">
                                                 <i data-feather="trash"></i>
                                             </button>
                                         </td>
